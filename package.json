@@ -12,6 +12,7 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "nodemon": "^1.13.3"
+    "nodemon": "^1.13.3",
+    "shopify-node-api": "^1.8.0"
   }
 }
