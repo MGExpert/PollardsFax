@@ -39,8 +39,6 @@ console.log('sending fax...')
 // make the api call to send the fax
 }
 
-console.log(idStore);
-
 // Setting up heroku - Dynamic Binding
 const PORT = process.env.PORT || 2000;
 app.listen(PORT);
