@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+const headerStore = [];
+
 app.post('/order-recieved', function(req, res) {
    var body = req.body
    res.set('Content-Type', 'text/plain')
@@ -11,9 +14,8 @@ app.post('/order-recieved', function(req, res) {
    console.log(`This is the request : ${req}`);
    const Keys = Object.keys(req.headers);
    console.log(Keys);
-   console.log(req.headers.x-shopify-order-id);
-
-
+   headerStore.push(req.headers);
+   console.log(headerStore);
 });
 
 
