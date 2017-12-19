@@ -27,7 +27,7 @@ function getDataFromShopify(id) {
   console.log('getting data...')
   console.log(`This is the id: ${id}`);
   // make the api call to get the data
-  Shopify.get('/admin/orders/#' + id + '.json', function(err, data, headers) {
+  Shopify.get('/admin/orders/' + id + '.json', function(err, data, headers) {
     console.log(data); // Data contains product json information
     console.log(headers); // Headers returned from request
   });
