@@ -18,12 +18,19 @@ const faxOrders = [];
 app.post('/order-recieved', function(req) {
    var body = req.body
    const getHeader = req.get('x-shopify-order-id');
-   const fetchOrder = Shopify.get(`/admin/orders/${getHeader}`);
-   console.log(fetchOrder);
-   const Keys = Object.keys(fetchOrder);
-   const Values = Object.values(fetchOrder);
-   console.log(`Here are the Keys: ${Keys}`);
-   console.log(`Here are the values: ${Values}`);   
+   const fetchOrder = Shopify.get(`/admin/orders/${getHeader}`).then( res => {
+
+     const Values = Object.values(res);
+     const Keys = Object.keys(res);
+
+     console.log('These are the values');
+     console.log(Values);
+
+     console.log('These are the keys');
+     console.log(Keys);
+
+   });
+
 });
 
 
