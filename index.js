@@ -18,7 +18,7 @@ const faxOrders = [];
 app.post('/order-recieved', function(req) {
    var body = req.body
    const getHeader = req.get('x-shopify-order-id');
-   const fetchOrder = Shopify.get(`/admin/orders/${getHeader}.json`);
+   const fetchOrder = Shopify.get(`/admin/orders/${getHeader}`);
    console.log(fetchOrder);
    faxOrders.push(fetchOrders);
 });
