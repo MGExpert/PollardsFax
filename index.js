@@ -17,13 +17,22 @@ app.post('/order-recieved', function(req, res) {
    const faxOrders = [];
    const id = req.get('x-shopify-order-id');
    faxOrders.push(id)
-   sendFax(id)
+   getDataFromShopify(id)
    res.send('success')
 });
 
-function sendFax(id) {
-  console.log('sending fax...')
-  // make the api call to send the fax
+function getDataFromShopify(id) {
+  console.log('getting data...')
+  // make the api call to get the data
+  Shopify.get('/admin/orders/#' + id + '.json', function(err, data, headers) {
+    console.log(data); // Data contains product json information
+    console.log(headers); // Headers returned from request
+  });
+}
+
+function sendFax() {
+console.log('sending fax...')
+// make the api call to send the fax
 }
 
 // Setting up heroku - Dynamic Binding
