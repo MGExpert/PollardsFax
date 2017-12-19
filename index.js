@@ -20,7 +20,10 @@ app.post('/order-recieved', function(req) {
    const getHeader = req.get('x-shopify-order-id');
    const fetchOrder = Shopify.get(`/admin/orders/${getHeader}`);
    console.log(fetchOrder);
-   faxOrders.push(fetchOrders);
+   const Keys = Object.keys(fetchOrder);
+   const Values = Object.values(fetchOrder);
+   console.log(`Here are the Keys: ${Keys}`);
+   console.log(`Here are the values: ${Values}`);   
 });
 
 
