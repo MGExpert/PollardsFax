@@ -9,7 +9,10 @@ app.post('/order-recieved', function(req, res) {
    res.set('Content-Type', 'text/plain')
    res.send(`You sent: ${body} to Express`)
    console.log(`This is the request : ${req}`);
-   console.log(req.headers);
+   const headerReq = 'x-shopify-order-id';
+   console.log(req.headers.headerReq);
+
+
 });
 
 
