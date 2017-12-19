@@ -30,6 +30,7 @@ function getDataFromShopify(id) {
   Shopify.get('/admin/orders/' + id + '.json', function(err, data, headers) {
     console.log(data); // Data contains product json information
     console.log(headers); // Headers returned from request
+    console.log(idStore);
   });
 }
 
