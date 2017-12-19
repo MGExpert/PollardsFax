@@ -13,6 +13,7 @@ var Shopify = new shopifyAPI({
   access_token: '0512819bc1724b742aabfcb605c97d12' // Your API password
 });
 
+const faxOrders = [];
 
 app.post('/order-recieved', function(req, res) {
    var body = req.body
@@ -21,6 +22,7 @@ app.post('/order-recieved', function(req, res) {
    const getHeader = req.get('x-shopify-order-id');
    const fetchOrder = Shopify.get(`/admin/orders/${getHeader}`);
    console.log(fetchOrder);
+   faxOrders.push(fetchOrders);
 });
 
 
