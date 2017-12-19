@@ -5,17 +5,15 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-const headerStore = [];
-const headerValues = [];
-const headerKeys = [];
+const orderId = [];
 
 app.post('/order-recieved', function(req, res) {
    var body = req.body
    res.set('Content-Type', 'text/plain')
-   res.send(`You sent: ${body} to Express`)
-   console.log(`This is the request : ${req}`);
+   res.send(`You sent: ${body} to Express`);
    const getHeader = req.get('x-shopify-order-id');
-   console.log(getHeader);
+   orderId.push(getHeader);
+   console.log(orderId);
 });
 
 
