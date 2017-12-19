@@ -11,6 +11,7 @@ app.post('/order-recieved', function(req, res) {
    console.log(`This is the request : ${req}`);
    const Keys = Object.keys(req.headers);
    console.log(Keys);
+   console.log(req.headers.'x-shopify-order-id');
 
 
 });
