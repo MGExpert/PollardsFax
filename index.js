@@ -7,6 +7,7 @@ app.post('/order-recieved', function(req, res) {
    var body = req.body.Body
    res.set('Content-Type', 'text/plain')
    res.send(`You sent: ${body} to Express`)
+   console.log(body);
 });
 
 
