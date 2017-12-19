@@ -15,21 +15,11 @@ var Shopify = new shopifyAPI({
 
 const faxOrders = [];
 
-app.post('/order-recieved', function(req) {
+app.post('/order-recieved', function(req, res) {
    var body = req.body
+   
    const getHeader = req.get('x-shopify-order-id');
-   const fetchOrder = Shopify.get(`/admin/orders/${getHeader}`).then( res => {
-
-     const Values = Object.values(res);
-     const Keys = Object.keys(res);
-
-     console.log('These are the values');
-     console.log(Values);
-
-     console.log('These are the keys');
-     console.log(Keys);
-
-   });
+   const fetchOrder = Shopify.get(`/admin/orders/${getHeader}`);
    console.log(fetchOrder);
 });
 
