@@ -15,7 +15,7 @@ var Shopify = new shopifyAPI({
 
 const faxOrders = [];
 
-app.post('/order-recieved', function(req, res) {
+app.post('/order-recieved', function(req) {
    var body = req.body
    res.set('Content-Type', 'text/plain')
    res.send(`You sent: ${body} to Express`);
