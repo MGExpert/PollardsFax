@@ -17,8 +17,6 @@ const faxOrders = [];
 
 app.post('/order-recieved', function(req) {
    var body = req.body
-   res.set('Content-Type', 'text/plain')
-   res.send(`You sent: ${body} to Express`);
    const getHeader = req.get('x-shopify-order-id');
    const fetchOrder = Shopify.get(`/admin/orders/${getHeader}`);
    console.log(fetchOrder);
