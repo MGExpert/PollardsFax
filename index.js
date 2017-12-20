@@ -33,12 +33,12 @@ function getDataFromShopify(id) {
     console.log(idStore);
     const Values = Object.values(data);
     const Keys = Object.keys(data);
-    sendEmail()
     console.log("These are the Keys");
     console.log(Keys);
 
     console.log("These are the Values");
     console.log(Values);
+    sendEmail()
   });
 }
 
