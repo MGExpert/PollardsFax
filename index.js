@@ -31,12 +31,15 @@ function getDataFromShopify(id) {
     console.log(data); // Data contains product json information
     console.log(headers); // Headers returned from request
     console.log(idStore);
+    const orderIdentity = data.customer.id;
+    sendEmail()
+    console.log(orderIdentity);
   });
 }
 
 
-function sendFax() {
-console.log('sending fax...')
+function sendEmail() {
+console.log('sending Email...')
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const msg = {
@@ -47,7 +50,7 @@ const msg = {
     html: '<strong>Node.js is trying to send you a message</strong>',
   };
   sgMail.send(msg);
-  console.log("Message Sent - Yay!!");
+  console.log("Message Sent - Yay");
 }
 
 // Setting up heroku - Dynamic Binding
