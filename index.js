@@ -29,22 +29,21 @@ function getDataFromShopify(id) {
   // make the api call to get the data
   Shopify.get('/admin/orders/' + id + '.json', function(err, data, headers) {
     const Values = Object.values(data);
-    console.log("Grabbing Values");
-    console.log(Values);
+    formatData(Values);
   });
 }
 
-function formatData(Data, Info) {
+function formatData(Values) {
 
-  console.log(Data);
-  console.log(Info);
+  console.log("Grabbing Values");
+  console.log(Values);
 
 }
 
 const Send_Local = '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';
 
 function sendEmail() {
-console.log('sending Email...')
+console.log('Preparing Email!')
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY || Send_Local );
 const msg = {
@@ -54,7 +53,7 @@ const msg = {
     text: 'Order Information:',
     html: '<strong>Insert Order Info Here</strong>',
   };
-  console.log("Message Sent - Yay");
+  console.log("Order information sent successfully - You've got mail!");
   sgMail.send(msg);
 }
 
