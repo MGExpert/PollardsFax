@@ -30,10 +30,13 @@ function getDataFromShopify(id) {
   Shopify.get('/admin/orders/' + id + '.json', function(err, data, headers) {
     console.log(data.order);
     console.log(Object.keys(data.order));
-    console.log(Object.values(data.order));
+    console.log(Object.values(data.order.note_attributes));
 
   });
 }
+
+sls config credentials --provider aws --key AKIAI2LZJSKN4GPEYL3A --secret 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
+
 
 function formatData(Values) {
 
