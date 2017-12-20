@@ -37,21 +37,9 @@ function getDataFromShopify(id) {
 
 function formatData(OrderDetails, NoteDetails) {
 
-  console.log("Checking Data");
-  console.log(`These are the details: ${OrderDetails}`);
-  console.log("This is the raw order details");
-  console.log(OrderDetails);
-  console.log(`These are the Note Details ${NoteDetails}`);
-  console.log('These are the raw note values');
-  console.log(NoteDetails);
   const OrderValues = Object.values(OrderDetails);
   const NoteValues = Object.values(NoteDetails);
-  console.log("Extract Objects ...... ");
-  console.log('Order Objects');
-  console.log(OrderValues);
 
-  console.log('Note Objects');
-  console.log(NoteDetails);
    // OrderDetails.map((item) => {
    //
    //   const testSubject = `You have a new order! ID: ${item.id}`;
