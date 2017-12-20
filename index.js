@@ -31,9 +31,14 @@ function getDataFromShopify(id) {
     console.log(data); // Data contains product json information
     console.log(headers); // Headers returned from request
     console.log(idStore);
-    const orderIdentity = data.customer.id;
+    const Values = Object.values(data);
+    const Keys = Object.keys(data);
     sendEmail()
-    console.log(orderIdentity);
+    console.log("These are the Keys");
+    console.log(Keys);
+
+    console.log("These are the Values");
+    console.log(Values);
   });
 }
 
