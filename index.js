@@ -42,7 +42,7 @@ function formatData(OrderDetails, NoteValues) {
      const testSubject = `You have a new order! ID: ${item.id}`;
      const testBody = `${item.id}`;
      sendEmail(testSubject, testBody);
-   })
+   });
 
 
 }
