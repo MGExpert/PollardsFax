@@ -37,12 +37,27 @@ function getDataFromShopify(id) {
 
 function formatData(OrderDetails, NoteValues) {
 
-   OrderDetails.map((item) => {
+  console.log("Checking Data");
+  console.log(`These are the details: ${OrderDetails}`);
+  console.log("This is the raw order details");
+  console.log(OrderDetails);
+  console.log(`These are the Note Details ${NoteValues}`);
+  console.log('These are the raw note values');
+  console.log(NoteValues);
+  const OrderValues = Object.values(OrderDetails);
+  const NoteNewValues = Object.values(NoteValues);
+  console.log("Extract Objects ...... ");
+  console.log('Order Objects');
+  console.log(OrderValues);
 
-     const testSubject = `You have a new order! ID: ${item.id}`;
-     const testBody = `${item.id}`;
-     sendEmail(testSubject, testBody);
-   });
+  console.log('Note Objects');
+  console.log(NoteNewValues);
+   // OrderDetails.map((item) => {
+   //
+   //   const testSubject = `You have a new order! ID: ${item.id}`;
+   //   const testBody = `${item.id}`;
+   //   sendEmail(testSubject, testBody);
+   // });
 
 
 }
