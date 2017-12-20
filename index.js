@@ -40,7 +40,8 @@ function formatData(OrderDetails, NoteValues) {
    OrderDetails.map((item) => {
 
      const testSubject = `You have a new order! ID: ${item.id}`;
-     sendEmail(testSubject);
+     const testBody = `${item.id}`;
+     sendEmail(testSubject, testBody);
    })
 
 
@@ -48,7 +49,7 @@ function formatData(OrderDetails, NoteValues) {
 
 const Send_Local = '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';
 
-function sendEmail(testSubject) {
+function sendEmail(testSubject, testBody) {
 console.log('Preparing Email!')
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY || Send_Local );
@@ -57,7 +58,7 @@ const msg = {
     from: 'sendgrid@danielsnell.ninja',
     subject: `${testSubject}`,
     text: 'Order Information:',
-    html: '<strong>Insert Order Info Here</strong>',
+    html: `<div><strong>Order ID:</strong> ${testBody}</div>`,
   };
   console.log("Order information sent successfully - You've got mail!");
   sgMail.send(msg);
