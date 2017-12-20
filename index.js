@@ -28,8 +28,9 @@ function getDataFromShopify(id) {
   console.log(`This is the id: ${id}`);
   // make the api call to get the data
   Shopify.get('/admin/orders/' + id + '.json', function(err, data, headers) {
-    console.log(data.order);
-    console.log(Object.keys(data.order));
+    console.log("Order Information");
+    console.log(Object.values(data.order));
+    console.log("Note Attributes");
     console.log(Object.values(data.order.note_attributes));
 
   });
