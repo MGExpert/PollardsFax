@@ -58,18 +58,18 @@ function formatData(OrderDetails, NoteDetails) {
    //   const testBody = `${item.id}`;
    //   sendEmail(testSubject, testBody);
    // });
-   const orderMill = OrderDetails.forEach((item) => {
+  OrderDetails.forEach = (item) => {
 
      console.log(item);
      console.log(item.id);
 
-   });
+   };
 
-  const noteMill =  NoteDetails.forEach((item) => {
+  NoteDetails.forEach = (item) => {
 
      console.log(item);
 
-   });
+   };
 
 }
 
