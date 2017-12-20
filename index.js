@@ -28,31 +28,34 @@ function getDataFromShopify(id) {
   console.log(`This is the id: ${id}`);
   // make the api call to get the data
   Shopify.get('/admin/orders/' + id + '.json', function(err, data, headers) {
-    console.log("Order Information");
-    console.log(Object.values(data.order));
-    console.log("Note Attributes");
-    console.log(Object.values(data.order.note_attributes));
-
+    console.log("Order Details Obtained!")
+    const OrderDetails = Object.values(data.order);
+    const NoteValues = Object.values(data.order.note_attributes);
+    formatData(OrderDetails, NoteValues);
   });
 }
 
-function formatData(Values) {
+function formatData(OrderDetails, NoteValues) {
 
-  console.log("Grabbing Values");
-  console.log(Values);
+   OrderDetails.map((item) => {
+
+     const testSubject = `You have a new order! ID: ${item.id}`;
+     sendEmail(testSubject);
+   })
+
 
 }
 
 const Send_Local = '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';
 
-function sendEmail() {
+function sendEmail(testSubject) {
 console.log('Preparing Email!')
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY || Send_Local );
 const msg = {
     to: 'hi@danielsnell.ninja',
     from: 'sendgrid@danielsnell.ninja',
-    subject: 'Pollards Chicken Test',
+    subject: `${testSubject}`,
     text: 'Order Information:',
     html: '<strong>Insert Order Info Here</strong>',
   };
