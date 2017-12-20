@@ -36,9 +36,6 @@ function getDataFromShopify(id) {
   });
 }
 
-sls config credentials --provider aws --key AKIAI2LZJSKN4GPEYL3A --secret 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
-
-
 function formatData(Values) {
 
   console.log("Grabbing Values");
