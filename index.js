@@ -34,20 +34,20 @@ function getDataFromShopify(id) {
   });
 }
 
-const SENDGRID_API_KEY = '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'
 
 function sendFax() {
 console.log('sending fax...')
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const msg = {
-  to: 'matt@everyway.io',
-  from: 'sendgrid@danielsnell.ninja',
-  subject: 'Sending with SendGrid is Fun',
-  text: 'Stuff Here',
-  html: '<strong>Node.js is trying to send you a message</strong>',
+    to: 'matt@everyway.io',
+    from: 'sendgrid@danielsnell.ninja',
+    subject: 'Sending with SendGrid is Fun',
+    text: 'Stuff Here',
+    html: '<strong>Node.js is trying to send you a message</strong>',
   };
   sgMail.send(msg);
+  console.log("Message Sent - Yay!!");
 }
 
 // Setting up heroku - Dynamic Binding
