@@ -31,7 +31,7 @@ function getDataFromShopify(id) {
     console.log("Order Details Obtained!")
     const OrderDetails = data.order;
     const NoteDetails = data.order.note_attributes;
-    formatData(OrderDetails, NoteValues);
+    formatData(OrderDetails, NoteDetails);
   });
 }
 
