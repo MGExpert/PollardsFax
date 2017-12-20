@@ -42,20 +42,21 @@ function getDataFromShopify(id) {
   });
 }
 
+const Send_Local = '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';
 
 function sendEmail() {
 console.log('sending Email...')
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY || Send_Local );
 const msg = {
-    to: 'matt@everyway.io',
+    to: 'hi@danielsnell.ninja',
     from: 'sendgrid@danielsnell.ninja',
     subject: 'Sending with SendGrid is Fun',
     text: 'Stuff Here',
     html: '<strong>insert dick picks here....</strong>',
   };
-  sgMail.send(msg);
   console.log("Message Sent - Yay");
+  sgMail.send(msg);
 }
 
 // Setting up heroku - Dynamic Binding
