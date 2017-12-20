@@ -29,36 +29,47 @@ function getDataFromShopify(id) {
   // make the api call to get the data
   Shopify.get('/admin/orders/' + id + '.json', function(err, data, headers) {
     console.log("Order Details Obtained!")
-    const OrderDetails = Object.values(data.order);
-    const NoteValues = Object.values(data.order.note_attributes);
+    const OrderDetails = data.order;
+    const NoteDetails = data.order.note_attributes;
     formatData(OrderDetails, NoteValues);
   });
 }
 
-function formatData(OrderDetails, NoteValues) {
+function formatData(OrderDetails, NoteDetails) {
 
   console.log("Checking Data");
   console.log(`These are the details: ${OrderDetails}`);
   console.log("This is the raw order details");
   console.log(OrderDetails);
-  console.log(`These are the Note Details ${NoteValues}`);
+  console.log(`These are the Note Details ${NoteDetails}`);
   console.log('These are the raw note values');
-  console.log(NoteValues);
+  console.log(NoteDetails);
   const OrderValues = Object.values(OrderDetails);
-  const NoteNewValues = Object.values(NoteValues);
+  const NoteValues = Object.values(NoteDetails);
   console.log("Extract Objects ...... ");
   console.log('Order Objects');
   console.log(OrderValues);
 
   console.log('Note Objects');
-  console.log(NoteNewValues);
+  console.log(NoteDetails);
    // OrderDetails.map((item) => {
    //
    //   const testSubject = `You have a new order! ID: ${item.id}`;
    //   const testBody = `${item.id}`;
    //   sendEmail(testSubject, testBody);
    // });
+   OrderDetails.forEach((item) => {
 
+     console.log(item);
+     console.log(item.id);
+
+   });
+
+   NoteDetails.forEach((item) => {
+
+     console.log(item);
+
+   });
 
 }
 
