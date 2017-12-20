@@ -52,7 +52,7 @@ const msg = {
     from: 'sendgrid@danielsnell.ninja',
     subject: 'Sending with SendGrid is Fun',
     text: 'Stuff Here',
-    html: '<strong>Node.js is trying to send you a message</strong>',
+    html: '<strong>insert dick picks here....</strong>',
   };
   sgMail.send(msg);
   console.log("Message Sent - Yay");
