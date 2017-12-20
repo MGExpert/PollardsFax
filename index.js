@@ -28,18 +28,17 @@ function getDataFromShopify(id) {
   console.log(`This is the id: ${id}`);
   // make the api call to get the data
   Shopify.get('/admin/orders/' + id + '.json', function(err, data, headers) {
-    console.log(data); // Data contains product json information
-    console.log(headers); // Headers returned from request
-    console.log(idStore);
     const Values = Object.values(data);
-    const Keys = Object.keys(data);
-    console.log("These are the Keys");
-    console.log(Keys);
-
-    console.log("These are the Values");
+    console.log("Grabbing Values");
     console.log(Values);
-    sendEmail()
   });
+}
+
+function formatData(Data, Info) {
+
+  console.log(Data);
+  console.log(Info);
+
 }
 
 const Send_Local = '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';
@@ -51,9 +50,9 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY || Send_Local );
 const msg = {
     to: 'hi@danielsnell.ninja',
     from: 'sendgrid@danielsnell.ninja',
-    subject: 'Sending with SendGrid is Fun',
-    text: 'Stuff Here',
-    html: '<strong>insert dick picks here....</strong>',
+    subject: 'Pollards Chicken Test',
+    text: 'Order Information:',
+    html: '<strong>Insert Order Info Here</strong>',
   };
   console.log("Message Sent - Yay");
   sgMail.send(msg);
