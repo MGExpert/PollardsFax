@@ -176,6 +176,20 @@ const FaxInfo = OrderProps[4];
 console.log(Object.values(FaxInfo));
 const toEmail = FaxInfo.value;
 
+const CheckEmail = (OrderProps) => {
+
+if ( FaxInfo.name != 'custom-attribute-1' ) {
+
+  return `Something went wrong ${toEmail} was found`;
+
+} else {
+
+  return `Something went right! ${toEmail}`
+
+      }
+
+}
+
 console.log('Preparing Email!')
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -186,7 +200,9 @@ const msg = {
     subject: `${SubLine}`,
     text: 'Order Information:',
     html: `
-    <h1>Send to: ${toEmail}</h1><br />
+    <h1> Check Success </h1> <br />
+    <p>${CheckEmail}</p>
+    <br />
     <h1> New Order Summary </h1>
     <br />
   <div>
