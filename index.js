@@ -214,6 +214,7 @@ const msg = {
     <strong>If there is any problems with this email, please email webmaster@ittfags.com</strong>
     `
   };
+  console.log(`send email to ${toEmail}`);
   console.log("Order information sent successfully - You've got mail!");
   sgMail.send(msg);
 }
