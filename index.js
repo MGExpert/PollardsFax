@@ -175,19 +175,19 @@ console.log(OrderProps[4]);
 const FaxInfo = OrderProps[4];
 console.log(Object.values(FaxInfo));
 const toEmail = FaxInfo.value;
-
+const testEmail = 'matt@everyway.io';
 console.log('Preparing Email!')
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const msg = {
-    to: 'matt@everyway.io',
-    from: 'sendgrid@danielsnell.ninja',
+    to: `${testEmail}`,
+    from: 'webmaster@pollardschicken.com',
     subject: `${SubLine}`,
     text: 'Order Information:',
     html: `
-    <h1> Check Success </h1> <br />
-    <p>Send to: ${toEmail}</p>
+    <h1> Check Success sent to ${testEmail} </h1> <br />
+    <p>Should be sent to: ${toEmail}</p>
     <br />
     <h1> New Order Summary </h1>
     <br />
