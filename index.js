@@ -189,7 +189,8 @@ if ( FaxInfo.name != 'custom-attribute-1' ) {
       }
 
 }
-
+  console.log("is the email right?");
+  console.log(CheckEmail);
 console.log('Preparing Email!')
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
