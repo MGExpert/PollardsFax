@@ -236,6 +236,7 @@ const prepEmail = (OrderInfo) => {
         `
       );
     });
+    console.log(Stores);
   });
 
 
