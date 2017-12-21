@@ -40,7 +40,6 @@ const prepEmail = (OrderInfo) => {
   const OrderProps = [];
 
   const SubLine = [];
-  console.log(OrderInfo);
 
   Values.forEach((item) => {
 
@@ -137,7 +136,6 @@ const prepEmail = (OrderInfo) => {
       );
 
         OrderProps.push(item);
-        console.log(OrderProps);
     });
 
   });
