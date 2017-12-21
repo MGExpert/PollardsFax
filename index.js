@@ -143,7 +143,7 @@ const prepEmail = (OrderInfo) => {
   console.log(OrderInfo);
 
   Values.forEach((item) => {
-
+    console.log(item.note_attributes);
     SubLine.push(`
 
       Pollard's has a new order from ${item.customer.default_address.name}
