@@ -142,8 +142,7 @@ const prepEmail = (OrderInfo) => {
       res => res.data);
 
       console.log(grabStores);
-
-  });
+      
   });
 
 
