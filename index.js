@@ -40,13 +40,7 @@ const prepEmail = (OrderInfo) => {
   const SubLine = [];
   console.log(OrderInfo);
 
-  console.log(Object.keys(OrderInfo.note_attributes));
-
   Values.forEach((item) => {
-
-    const findFax = item.note_attributes.find( i => i == 'Custom-Attribute-1');
-    console("This is the fax");
-    console.log(findFax);
 
     SubLine.push(`
 
@@ -130,9 +124,8 @@ const prepEmail = (OrderInfo) => {
       const noteValues = Object.values(item.note_attributes);
 
       noteValues.forEach((item) => {
-        const Keys = Object.keys(item);
-        const Values = Object.values(item);
-      OrderMethod.push(
+
+          OrderMethod.push(
         `
 
         <li><strong>${item.name}:</strong> ${item.value}</li>
@@ -172,6 +165,12 @@ function getDataFromShopify(id) {
 
 
 function sendEmail(SubLine, OrderDetails, lineItems, OrderMethod, CustomerAddress, ShippingAddress) {
+
+  const findFax = OrderMethod.find( i => i == 'Custom-Attribute-1');
+  console("This is the fax");
+  console.log(findFax);
+
+
 console.log('Preparing Email!')
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
