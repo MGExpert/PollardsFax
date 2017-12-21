@@ -31,6 +31,8 @@ const prepEmail = (OrderInfo) => {
 
   const Values = Object.values(OrderInfo);
 
+  const Stores = [];
+
   const OrderDetails = [];
   const CustomerAddress = [];
   const OrderMethod = [];
@@ -133,16 +135,22 @@ const prepEmail = (OrderInfo) => {
 
         `
       );
-
-      });
-      const grabStores = axios.get(
-        'https://cdn.shopify.com/s/files/1/2473/6554/files/convertcsv.json?12759292200011501184').then(
-        res => {
-        const Values = Object.values(res.data);
-        console.log(res.data);
-        console.log(Values);
-      });
+    });
   });
+
+  const grabStores = axios.get(
+    'https://cdn.shopify.com/s/files/1/2473/6554/files/convertcsv.json?12759292200011501184').then(
+    res => {
+    const Values = Object.values(res.data);
+    Values.forEach((item) => {
+      Stores.push({
+        id: item.field1,
+        address: item.field2,
+        fax: item.field3
+      });
+
+  });
+  console.log(Stores);
   sendEmail(SubLine, OrderDetails, lineItems, OrderMethod, CustomerAddress, ShippingAddress);
 }
 
