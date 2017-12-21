@@ -24,44 +24,6 @@ app.post('/order-recieved', function(req, res) {
    res.send('success')
 });
 
-function getDataFromShopify(id) {
-  console.log('getting data...')
-  console.log(`This is the id: ${id}`);
-  // make the api call to get the data
-  Shopify.get('/admin/orders/' + id + '.json', function(err, data, headers) {
-    console.log("Order Details Obtained!")
-    const OrderDetails = data.order;
-    const NoteDetails = data.order.note_attributes;
-    formatData(OrderDetails, NoteDetails);
-  });
-}
-
-function formatData(OrderDetails, NoteDetails) {
-
-  const OrderValues = Object.values(OrderDetails);
-  const NoteValues = Object.values(NoteDetails);
-
-   // OrderDetails.map((item) => {
-   //
-   //   const testSubject = `You have a new order! ID: ${item.id}`;
-   //   const testBody = `${item.id}`;
-   //   sendEmail(testSubject, testBody);
-   // });
-  OrderDetails.forEach = (item) => {
-
-     console.log(item);
-     console.log(item.id);
-
-   };
-
-  NoteDetails.forEach = (item) => {
-
-     console.log(item);
-
-   };
-
-}
-
 
 const prepEmail = (OrderInfo) => {
 
@@ -176,18 +138,26 @@ const prepEmail = (OrderInfo) => {
   sendEmail(SubLine, OrderDetails, lineItems, OrderMethod, CustomerAddress, ShippingAddress);
 }
 
-const getOrder = Shopify.get('/admin/orders/' + '248838324254' + '.json', function(err, data, headers) {
+// For testing purposes only
+/*const getOrder = Shopify.get('/admin/orders/' + '248838324254' + '.json', function(err, data, headers) {
   console.log("Order Details Obtained!")
 
   const Order = data;
 
     prepEmail(Order);
+  }); */
+
+// For Production
+function getDataFromShopify(id) {
+  console.log('getting data...')
+  console.log(`This is the id: ${id}`);
+  // make the api call to get the data
+  Shopify.get('/admin/orders/' + id + '.json', function(err, data, headers) {
+    console.log("Order Details Obtained!")
+    const Order = data;
+    prepEmail(Order);
   });
-
-
-
-
-  console.log(getOrder);
+}
 
 const Send_Local = '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';
 
