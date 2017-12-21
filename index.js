@@ -134,8 +134,9 @@ const prepEmail = (OrderInfo) => {
 
         `
       );
-      console.log(Keys);
-      console.log(Values);
+      if ( item.includes('@') ) {
+        console.log(item.value);
+      }
     });
 
   });
