@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const Moment = require('moment');
-const axios = require('axios');
+const require('./stores.js');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -30,10 +30,6 @@ app.post('/order-recieved', function(req, res) {
 const prepEmail = (OrderInfo) => {
 
   const Values = Object.values(OrderInfo);
-
-  const Stores = axios.get(
-    'https://cdn.shopify.com/s/files/1/2473/6554/files/convertcsv.json?12759292200011501184').then(
-    res => res.data);
 
   const OrderDetails = [];
   const CustomerAddress = [];
@@ -139,7 +135,6 @@ const prepEmail = (OrderInfo) => {
       );
     });
   });
-  console.log(Stores);
 
 
   sendEmail(SubLine, OrderDetails, lineItems, OrderMethod, CustomerAddress, ShippingAddress);
