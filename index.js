@@ -37,6 +37,8 @@ const prepEmail = (OrderInfo) => {
   const ShippingAddress = [];
   const lineItems = [];
 
+  const OrderProps = [];
+
   const SubLine = [];
   console.log(OrderInfo);
 
@@ -134,12 +136,14 @@ const prepEmail = (OrderInfo) => {
         `
       );
 
+        OrderProps.push(item);
+        console.log(OrderProps);
     });
 
   });
 
 
-  sendEmail(SubLine, OrderDetails, lineItems, OrderMethod, CustomerAddress, ShippingAddress);
+  sendEmail(OrderProps, SubLine, OrderDetails, lineItems, OrderMethod, CustomerAddress, ShippingAddress);
 }
 
 // For testing purposes only
@@ -164,15 +168,9 @@ function getDataFromShopify(id) {
 }
 
 
-function sendEmail(SubLine, OrderDetails, lineItems, OrderMethod, CustomerAddress, ShippingAddress) {
-
-  console.log(OrderDetails[0]);
-  console.log(OrderDetails[1]);
-  console.log(OrderDetails[2]);
-  console.log(OrderDetails[3]);
-  console.log(OrderDetails[4]);
-  console.log(OrderDetails[5]);
-  console.log(OrderDetails[6]);
+function sendEmail(OrderProps, SubLine, OrderDetails, lineItems, OrderMethod, CustomerAddress, ShippingAddress) {
+console.log("These are the order properties");
+console.log(OrderProps);
 
 
 console.log('Preparing Email!')
