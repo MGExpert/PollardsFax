@@ -176,19 +176,6 @@ const FaxInfo = OrderProps[4];
 console.log(Object.values(FaxInfo));
 const toEmail = FaxInfo.value;
 
-const CheckEmail = (OrderProps) => {
-
-if ( FaxInfo.name != 'custom-attribute-1' ) {
-
-  return `Something went wrong ${toEmail} was found`;
-
-} else {
-
-  return `Something went right! ${toEmail}`
-
-      }
-
-}
   console.log("is the email right?");
   console.log(CheckEmail);
 console.log('Preparing Email!')
@@ -202,7 +189,7 @@ const msg = {
     text: 'Order Information:',
     html: `
     <h1> Check Success </h1> <br />
-    <p>${CheckEmail}</p>
+    <p>Send to: ${toEmail}</p>
     <br />
     <h1> New Order Summary </h1>
     <br />
