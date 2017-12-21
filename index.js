@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const Moment = require('moment');
-const require('stores.js');
+const stores = require('stores.json');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
