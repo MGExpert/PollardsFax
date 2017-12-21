@@ -141,7 +141,7 @@ const prepEmail = (OrderInfo) => {
       'https://cdn.shopify.com/s/files/1/2473/6554/files/convertcsv.json?12759292200011501184').then(
       res => {
       const Values = Object.values(res.data);
-      Values.forEach((item) => {
+      res.data.forEach((item) => {
 
         console.log(item.field1);
     });
