@@ -235,6 +235,9 @@ const prepEmail = (OrderInfo) => {
 
         `
       );
+      if ( item == Stores.id) {
+        console.log(Stores.id, Stores.Address, Stores.fax);
+      }
     });
     console.log(Stores);
   });
