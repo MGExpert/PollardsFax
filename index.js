@@ -147,11 +147,10 @@ const prepEmail = (OrderInfo) => {
           address: item.field2,
           fax: item.field3
         });
-
+        console.log(Stores);
     });
 
   });
-  console.log(Stores);
   });
 
 
