@@ -166,9 +166,13 @@ function getDataFromShopify(id) {
 
 function sendEmail(SubLine, OrderDetails, lineItems, OrderMethod, CustomerAddress, ShippingAddress) {
 
-  const findFax = OrderMethod.find('Custom-Attribute-1');
-  console.log("This is the fax");
-  console.log(findFax);
+  console.log(OrderDetails[0]);
+  console.log(OrderDetails[1]);
+  console.log(OrderDetails[2]);
+  console.log(OrderDetails[3]);
+  console.log(OrderDetails[4]);
+  console.log(OrderDetails[5]);
+  console.log(OrderDetails[6]);
 
 
 console.log('Preparing Email!')
