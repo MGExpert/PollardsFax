@@ -41,7 +41,11 @@ const prepEmail = (OrderInfo) => {
   console.log(OrderInfo);
 
   Values.forEach((item) => {
-    console.log(item.note_attributes);
+
+    const findFax = item.note_attributes.find( i => i == 'Custom-Attribute-1');
+    console("This is the fax");
+    console.log(findFax);
+
     SubLine.push(`
 
       Pollard's has a new order from ${item.customer.default_address.name}
@@ -134,9 +138,7 @@ const prepEmail = (OrderInfo) => {
 
         `
       );
-      if ( item.includes('@') ) {
-        console.log(item.value);
-      }
+
     });
 
   });
