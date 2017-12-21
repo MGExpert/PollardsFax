@@ -125,10 +125,6 @@ const prepEmail = (OrderInfo) => {
 
       noteValues.forEach((item) => {
 
-      var n = item.value.includes("@");
-      console.log("Store Email");
-      console.log(n);
-
       OrderMethod.push(
         `
 
@@ -139,7 +135,9 @@ const prepEmail = (OrderInfo) => {
       );
 
     });
-
+    console.log(noteValues);
+    console.log(noteValues.name[0]);
+    console.log(noteValues.value[0])
   });
 
 
