@@ -181,14 +181,11 @@ const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const msg = {
-    to: testEmail,
+    to: toEmail,
     from: 'webmaster@pollardschicken.com',
     subject: `${SubLine}`,
     text: 'Order Information:',
     html: `
-    <h1> Check Success sent to ${testEmail} </h1> <br />
-    <p>Should be sent to: ${toEmail}</p>
-    <br />
     <h1> New Order Summary </h1>
     <br />
   <div>
@@ -210,8 +207,6 @@ const msg = {
     </div>
     <br />
     ${ShippingAddress}
-    <br />
-    <strong>If there is any problems with this email, please email webmaster@ittfags.com</strong>
     `
   };
   console.log(`send email to ${toEmail}`);
