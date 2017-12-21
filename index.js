@@ -174,7 +174,7 @@ console.log(OrderProps);
 console.log(OrderProps[4]);
 const FaxInfo = OrderProps[4];
 console.log(Object.values(FaxInfo));
-console.log(FaxInfo.value);
+const toEmail = FaxInfo.value;
 
 console.log('Preparing Email!')
 const sgMail = require('@sendgrid/mail');
@@ -186,6 +186,7 @@ const msg = {
     subject: `${SubLine}`,
     text: 'Order Information:',
     html: `
+    <h1>Send to: ${toEmail}</h1><br />
     <h1> New Order Summary </h1>
     <br />
   <div>
