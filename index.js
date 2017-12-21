@@ -140,7 +140,7 @@ const prepEmail = (OrderInfo) => {
   const lineItems = [];
 
   const SubLine = [];
-
+  console.log(OrderInfo);
 
   Values.forEach((item) => {
 
