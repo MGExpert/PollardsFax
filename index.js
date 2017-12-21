@@ -139,12 +139,9 @@ const prepEmail = (OrderInfo) => {
 
     const grabStores = axios.get(
       'https://cdn.shopify.com/s/files/1/2473/6554/files/convertcsv.json?12759292200011501184').then(
-      res => {
-      const Values = Object.values(res.data);
-      res.forEach((item) => {
+      res => res.data);
 
-        console.log(item.field1);
-    });
+      console.log(grabStores);
 
   });
   });
