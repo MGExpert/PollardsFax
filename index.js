@@ -172,7 +172,9 @@ function sendEmail(OrderProps, SubLine, OrderDetails, lineItems, OrderMethod, Cu
 console.log("These are the order properties");
 console.log(OrderProps);
 console.log(OrderProps[4]);
-
+const FaxInfo = OrderProps[4];
+console.log(Object.values(FaxInfo));
+console.log(FaxInfo.value);
 
 console.log('Preparing Email!')
 const sgMail = require('@sendgrid/mail');
