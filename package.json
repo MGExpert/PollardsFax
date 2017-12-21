@@ -13,6 +13,7 @@
     "@sendgrid/mail": "^6.1.4",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "moment": "^2.20.1",
     "nodemon": "^1.13.3",
     "shopify-node-api": "^1.8.0"
   }
