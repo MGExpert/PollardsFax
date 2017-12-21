@@ -176,8 +176,6 @@ const FaxInfo = OrderProps[4];
 console.log(Object.values(FaxInfo));
 const toEmail = FaxInfo.value;
 
-  console.log("is the email right?");
-  console.log(CheckEmail);
 console.log('Preparing Email!')
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
