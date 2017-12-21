@@ -143,7 +143,7 @@ const prepEmail = (OrderInfo) => {
       const Values = Object.values(res.data);
       Values.forEach((item) => {
 
-        console.log(item);
+        console.log(item.field1);
     });
 
   });
