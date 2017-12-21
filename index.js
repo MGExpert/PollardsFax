@@ -171,6 +171,7 @@ function getDataFromShopify(id) {
 function sendEmail(OrderProps, SubLine, OrderDetails, lineItems, OrderMethod, CustomerAddress, ShippingAddress) {
 console.log("These are the order properties");
 console.log(OrderProps);
+console.log(OrderProps[4]);
 
 
 console.log('Preparing Email!')
