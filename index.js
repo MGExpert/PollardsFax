@@ -124,7 +124,8 @@ const prepEmail = (OrderInfo) => {
       const noteValues = Object.values(item.note_attributes);
 
       noteValues.forEach((item) => {
-
+        const Keys = Object.keys(item);
+        const Values = Object.values(item);
       OrderMethod.push(
         `
 
@@ -133,11 +134,10 @@ const prepEmail = (OrderInfo) => {
 
         `
       );
-
+      console.log(Keys);
+      console.log(Values);
     });
-    console.log(noteValues);
-    console.log(noteValues.name[0]);
-    console.log(noteValues.value[0])
+
   });
 
 
