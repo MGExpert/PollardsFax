@@ -40,6 +40,8 @@ const prepEmail = (OrderInfo) => {
   const SubLine = [];
   console.log(OrderInfo);
 
+  console.log(Object.keys(OrderInfo.note_attributes));
+
   Values.forEach((item) => {
 
     const findFax = item.note_attributes.find( i => i == 'Custom-Attribute-1');
