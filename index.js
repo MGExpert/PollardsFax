@@ -8,9 +8,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var shopifyAPI = require('shopify-node-api');
 
 var Shopify = new shopifyAPI({
-  shop: 'pollardschicken-com.myshopify.com', // MYSHOP.myshopify.com
-  shopify_api_key: 'cb10241d405803d037ed2d06c4840015', // Your API key
-  access_token: '0512819bc1724b742aabfcb605c97d12' // Your API password
+  shop: process.env.SHOPIFY_STORE_URI, // MYSHOP.myshopify.com
+  shopify_api_key: process.env.SHOPIFY_API_KEY, // Your API key
+  access_token: process.env.SHOPIFY_API_PASSWORD // Your API password
 });
 
   const idStore = [];
@@ -159,13 +159,11 @@ function getDataFromShopify(id) {
   });
 }
 
-const Send_Local = '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';
 
 function sendEmail(SubLine, OrderDetails, lineItems, OrderMethod, CustomerAddress, ShippingAddress) {
 console.log('Preparing Email!')
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY || Send_Local );
-
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const msg = {
     to: 'matt@everyway.io',
