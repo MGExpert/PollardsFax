@@ -152,6 +152,8 @@ const prepEmail = (OrderInfo) => {
 
   });
 
+  });
+
   console.log(Stores);
   sendEmail(SubLine, OrderDetails, lineItems, OrderMethod, CustomerAddress, ShippingAddress);
 }
