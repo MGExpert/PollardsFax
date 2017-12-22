@@ -184,7 +184,6 @@ const msg = {
     subject: `${SubLine}`,
     text: 'Order Information:',
     html: `
-    <img src="https://cdn.shopify.com/s/files/1/2473/6554/files/pollardswhite_226x_03b498b0-d568-45a8-a48b-3d5b6f0e6812.png?10989182883601734372">
     <h1> New Order Summary </h1>
     <br />
   <div>
