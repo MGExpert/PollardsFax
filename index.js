@@ -233,6 +233,9 @@ ${ShippingAddress}
 	const emailBody = htmlToText.fromString(toText);
 
 	// TESTING END
+	console.log('this is the message:');
+	console.log(emailBody);
+	console.log('was their an error?');
 	const sgMail = require('@sendgrid/mail');
 	sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -240,7 +243,7 @@ ${ShippingAddress}
 		to: toEmail,
 		from: 'webmaster@pollardschicken.com',
 		subject: `${SubLine}`,
-		text: emailBody,
+		text: `${emailBody}`,
 		html: ``
 	};
 	console.log(`send email to ${toEmail}`);
