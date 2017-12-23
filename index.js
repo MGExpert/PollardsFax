@@ -204,7 +204,31 @@ function sendEmail(
 	const toEmail = FaxInfo.value;
 	const testEmail = 'matt@everyway.io';
 	console.log('Preparing Email!');
-	const sgMail = require('@sendgrid/mail');
+	const toText = `
+<img src="https://cdn.shopify.com/s/files/1/2473/6554/files/pollardswhite_226x_03b498b0-d568-45a8-a48b-3d5b6f0e6812.png?10989182883601734372">
+<h1> New Order Summary </h1>
+<br />
+<div>
+<h2>Store Information Notes</h2>
+<ul>
+${OrderMethod}
+</ul>
+</div>
+<br />
+${OrderDetails}
+<br />
+${CustomerAddress}
+<br />
+<div>
+<h2>Product's Ordered</h2>
+<ul>
+${lineItems}
+</ul>
+</div>
+<br />
+${ShippingAddress}
+`;
+
 	// TESTING START
 
 	const emailBody = htmlToText.fromString(toText);
@@ -212,13 +236,14 @@ function sendEmail(
 	console.log(emailBody);
 
 	// TESTING END
+	const sgMail = require('@sendgrid/mail');
 	sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 	const msg = {
 		to: toEmail,
 		from: 'webmaster@pollardschicken.com',
 		subject: `${SubLine}`,
-		text: '',
+		text: 'Order Information:',
 		html: `
     <img src="https://cdn.shopify.com/s/files/1/2473/6554/files/pollardswhite_226x_03b498b0-d568-45a8-a48b-3d5b6f0e6812.png?10989182883601734372">
     <h1> New Order Summary </h1>
