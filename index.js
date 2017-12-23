@@ -179,6 +179,19 @@ function sendEmail(
 	const toEmail = FaxInfo.value;
 	const testEmail = 'matt@everyway.io';
 	console.log('Preparing Email!');
+	const toText = `New Order Summary
+
+  Store Information Notes
+
+  ${OrderMethod}
+
+  ${OrderDetails}
+
+  ${CustomerAddress}
+
+  ${lineItems}
+
+  ${ShippingAddress}`;
 	const sgMail = require('@sendgrid/mail');
 	sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -186,25 +199,13 @@ function sendEmail(
 		to: toEmail,
 		from: 'webmaster@pollardschicken.com',
 		subject: `${SubLine}`,
-		text: `
-    New Order Summary
-
-    Store Information Notes
-
-    ${OrderMethod}
-
-    ${OrderDetails}
-
-    ${CustomerAddress}
-
-    ${lineItems}
-
-    ${ShippingAddress}
-    `,
+		text: `${toText}`,
 		html: ''
 	};
 	console.log(`send email to ${toEmail}`);
 	console.log("Order information sent successfully - You've got mail!");
+	console.log(toText);
+	console.log('this was the message sent');
 	sgMail.send(msg);
 }
 
