@@ -14,6 +14,7 @@
     "axios": "^0.17.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "html-to-text": "^3.3.0",
     "moment": "^2.20.1",
     "nodemon": "^1.13.3",
     "shopify-node-api": "^1.8.0"

@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const Moment = require('moment');
+const htmlToText = require('html-to-text');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -204,12 +205,20 @@ function sendEmail(
 	const testEmail = 'matt@everyway.io';
 	console.log('Preparing Email!');
 	const sgMail = require('@sendgrid/mail');
+	// TESTING START
+
+	const emailBody = htmlToText.fromString(toText);
+
+	console.log(emailBody);
+
+	// TESTING END
 	sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 	const msg = {
 		to: toEmail,
 		from: 'webmaster@pollardschicken.com',
 		subject: `${SubLine}`,
+		text: '',
 		html: `
     <img src="https://cdn.shopify.com/s/files/1/2473/6554/files/pollardswhite_226x_03b498b0-d568-45a8-a48b-3d5b6f0e6812.png?10989182883601734372">
     <h1> New Order Summary </h1>
