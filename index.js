@@ -187,6 +187,8 @@ function getDataFromShopify(id) {
 	});
 }
 
+const convText = htmlToText.fromString(Text);
+
 function sendEmail(
 	OrderProps,
 	SubLine,
@@ -243,7 +245,7 @@ ${ShippingAddress}
 		to: toEmail,
 		from: 'webmaster@pollardschicken.com',
 		subject: `${SubLine}`,
-		text: htmlToText.fromString(toText),
+		text: `${convText(toText)}`,
 		html: ``
 	};
 	console.log(`send email to ${toEmail}`);
