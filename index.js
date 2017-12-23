@@ -45,16 +45,20 @@ const prepEmail = OrderInfo => {
 
 		ShippingAddress.push(
 			`
-      Shipping Information
-
-      ${item.shipping_address.name}
-      Company:  ${item.shipping_address.company}
-      Address:  ${item.shipping_address.address1}
-      Address Details:  ${item.shipping_address.address2}
-      City:  ${item.shipping_address.city}
-      Zip Code: ${item.shipping_address.zip}
-      Phone: ${item.shipping_address.phone}
-
+      <div>
+      <h2>Shipping Information</h2>
+      <ul>
+      <li><strong>Full Name: </strong> ${item.shipping_address.name} </li>
+      <li><strong>Company: </strong> ${item.shipping_address.company} </li>
+      <li><strong>Address: </strong> ${item.shipping_address.address1} </li>
+      <li><strong>Address Details: </strong> ${
+				item.shipping_address.address2
+			} </li>
+      <li><strong>City: </strong> ${item.shipping_address.city} </li>
+      <li><strong>Zip Code:</strong> ${item.shipping_address.zip} </li>
+      <li><strong>Phone:</strong> ${item.shipping_address.phone} </li>
+      </ul>
+      </div>
 
     `
 		);
@@ -65,12 +69,12 @@ const prepEmail = OrderInfo => {
 			lineItems.push(
 				`
 
-        Item id: ${item.id}
-        Option id: ${item.variant_id}
-        Qty: ${item.quantity}
-        Price: ${item.price}
-        Sku: ${item.sku}
-        Vendor: ${item.vendor}
+        <li><strong>Item id:</strong> ${item.id} </li>
+        <li><strong>Option id:</strong> ${item.variant_id} </li>
+        <li><strong>Qty:</strong> ${item.quantity} </li>
+        <li><strong>Price:</strong> ${item.price} </li>
+        <li><strong>Sku:</strong> ${item.sku} </li>
+        <li><strong>Vendor:</strong> ${item.vendor} </li>
 
         `
 			);
@@ -78,39 +82,59 @@ const prepEmail = OrderInfo => {
 
 		OrderDetails.push(
 			`
-
-      Order Details
-
-      id: ${item.customer.id}
-      Order Placed On: ${item.customer.created_at}
-      Last Updated: ${item.customer.updated_at}
-      First Name: ${item.customer.first_name}
-      Last Name: ${item.customer.last_name}
-      Order Count: ${item.customer.orders_count}
-      Order Notes: ${item.customer.note}
-      Last Order: ${item.customer.last_order_name}
+      <div>
+      <h2>Order Details</h2>
+      <ul>
+      <li><strong>id:</strong> ${item.customer.id}</li>
+      <li><strong>Order Placed On:</strong> ${item.customer.created_at}</li>
+      <li><strong>Last Updated:</strong> ${item.customer.updated_at}</li>
+      <li><strong>First Name:</strong> ${item.customer.first_name}</li>
+      <li><strong>Last Name:</strong> ${item.customer.last_name}</li>
+      <li><strong>Order Count:</strong> ${item.customer.orders_count}</li>
+      <li><strong>Order Notes:</strong> ${item.customer.note}</li>
+      <li><strong>Last Order:</strong> ${item.customer.last_order_name}</li>
+      </ul>
+      </div>
 
       `
 		);
 
 		CustomerAddress.push(
-			`
-        Customer Address Information
-
-        Full Name: ${item.customer.default_address.name}
-        Address id: ${item.customer.default_address.id}
-        Customer id: ${item.customer.default_address.customer_id}
-        Primary Address: ${item.customer.default_address.address1}
-        Address Details: ${item.customer.default_address.address2}
-        City: ${item.customer.default_address.city}
-        State: ${item.customer.default_address.province}
-        Country: ${item.customer.default_address.country}
-        Zip Code: ${item.customer.default_address.zip}
-        Phone: ${item.customer.default_address.phone}
-        State Abrv: ${item.customer.default_address.province_code}
-        Country Abrv: ${item.customer.default_address.country_code}
-
-
+			`<div>
+        <h2>Customer Address Information</h2>
+        <ul>
+        <li><strong>Full Name:</strong> ${
+					item.customer.default_address.name
+				}</li>
+        <li><strong>Address id:</strong> ${
+					item.customer.default_address.id
+				}</li>
+        <li><strong>Customer id:</strong> ${
+					item.customer.default_address.customer_id
+				}</li>
+        <li><strong>Primary Address:</strong> ${
+					item.customer.default_address.address1
+				}</li>
+        <li><strong>Address Details:</strong> ${
+					item.customer.default_address.address2
+				}</li>
+        <li><strong>City:</strong> ${item.customer.default_address.city}</li>
+        <li><strong>State:</strong> ${
+					item.customer.default_address.province
+				}</li>
+        <li><strong>Country:</strong> ${
+					item.customer.default_address.country
+				}</li>
+        <li><strong>Zip Code:</strong> ${item.customer.default_address.zip}</li>
+        <li><strong>Phone:</strong> ${item.customer.default_address.phone}</li>
+        <li><strong>State Abrv:</strong> ${
+					item.customer.default_address.province_code
+				}</li>
+        <li><strong>Country Abrv:</strong> ${
+					item.customer.default_address.country_code
+				}</li>
+        </ul>
+        </div>
         `
 		);
 
@@ -120,8 +144,8 @@ const prepEmail = OrderInfo => {
 			OrderMethod.push(
 				`
 
-        ${item.name}: ${item.value}
-        
+        <li><strong>${item.name}:</strong> ${item.value}</li>
+
 
         `
 			);
@@ -153,6 +177,7 @@ const prepEmail = OrderInfo => {
 // For Production
 function getDataFromShopify(id) {
 	console.log('getting data...');
+	console.log(`This is the id: ${id}`);
 	// make the api call to get the data
 	Shopify.get('/admin/orders/' + id + '.json', function(err, data, headers) {
 		console.log('Order Details Obtained!');
@@ -174,22 +199,10 @@ function sendEmail(
 	console.log(OrderProps);
 	console.log(OrderProps[4]);
 	const FaxInfo = OrderProps[4];
+	console.log(Object.values(FaxInfo));
 	const toEmail = FaxInfo.value;
 	const testEmail = 'matt@everyway.io';
 	console.log('Preparing Email!');
-	const toText = `New Order Summary
-
-  Store Information Notes
-
-  ${OrderMethod}
-
-  ${OrderDetails}
-
-  ${CustomerAddress}
-
-  ${lineItems}
-
-  ${ShippingAddress}`;
 	const sgMail = require('@sendgrid/mail');
 	sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -197,12 +210,33 @@ function sendEmail(
 		to: toEmail,
 		from: 'webmaster@pollardschicken.com',
 		subject: `${SubLine}`,
-		text: toText,
-		html: ''
+		html: `
+    <img src="https://cdn.shopify.com/s/files/1/2473/6554/files/pollardswhite_226x_03b498b0-d568-45a8-a48b-3d5b6f0e6812.png?10989182883601734372">
+    <h1> New Order Summary </h1>
+    <br />
+  <div>
+    <h2>Store Information Notes</h2>
+    <ul>
+  ${OrderMethod}
+  </ul>
+  </div>
+    <br />
+    ${OrderDetails}
+    <br />
+  ${CustomerAddress}
+  <br />
+  <div>
+    <h2>Product's Ordered</h2>
+    <ul>
+    ${lineItems}
+    </ul>
+    </div>
+    <br />
+    ${ShippingAddress}
+    `
 	};
 	console.log(`send email to ${toEmail}`);
 	console.log("Order information sent successfully - You've got mail!");
-	console.log('this was the message sent');
 	sgMail.send(msg);
 }
 
