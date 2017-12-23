@@ -243,7 +243,7 @@ ${ShippingAddress}
 		to: toEmail,
 		from: 'webmaster@pollardschicken.com',
 		subject: `${SubLine}`,
-		text: htmlToText.fromString(toText);,
+		text: htmlToText.fromString(toText),
 		html: ``
 	};
 	console.log(`send email to ${toEmail}`);
