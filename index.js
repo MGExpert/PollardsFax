@@ -186,8 +186,7 @@ function sendEmail(
 		to: toEmail,
 		from: 'webmaster@pollardschicken.com',
 		subject: `${SubLine}`,
-		text: 'Order Information:',
-		html: `
+		text: `
     New Order Summary
 
     Store Information Notes
@@ -201,7 +200,8 @@ function sendEmail(
     ${lineItems}
 
     ${ShippingAddress}
-    `
+    `,
+		html: ''
 	};
 	console.log(`send email to ${toEmail}`);
 	console.log("Order information sent successfully - You've got mail!");
