@@ -121,7 +121,7 @@ const prepEmail = OrderInfo => {
 				`
 
         ${item.name}: ${item.value}
-
+        
 
         `
 			);
@@ -153,7 +153,6 @@ const prepEmail = OrderInfo => {
 // For Production
 function getDataFromShopify(id) {
 	console.log('getting data...');
-	console.log(`This is the id: ${id}`);
 	// make the api call to get the data
 	Shopify.get('/admin/orders/' + id + '.json', function(err, data, headers) {
 		console.log('Order Details Obtained!');
@@ -175,7 +174,6 @@ function sendEmail(
 	console.log(OrderProps);
 	console.log(OrderProps[4]);
 	const FaxInfo = OrderProps[4];
-	console.log(Object.values(FaxInfo));
 	const toEmail = FaxInfo.value;
 	const testEmail = 'matt@everyway.io';
 	console.log('Preparing Email!');
@@ -199,12 +197,11 @@ function sendEmail(
 		to: toEmail,
 		from: 'webmaster@pollardschicken.com',
 		subject: `${SubLine}`,
-		text: `${toText}`,
+		text: toText,
 		html: ''
 	};
 	console.log(`send email to ${toEmail}`);
 	console.log("Order information sent successfully - You've got mail!");
-	console.log(toText);
 	console.log('this was the message sent');
 	sgMail.send(msg);
 }
