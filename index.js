@@ -204,8 +204,7 @@ function sendEmail(
 ) {
 	console.log('These are the order properties');
 	console.log(OrderProps);
-	const FaxInfo = OrderProps;
-	console.log(Object.values(FaxInfo));
+	const FaxInfo = OrderProps[0];
 	const toEmail = FaxInfo;
 	console.log(`to email: ${FaxInfo}`);
 	const testEmail = 'matt@everyway.io';
