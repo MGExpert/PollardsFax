@@ -197,7 +197,22 @@ function sendEmail(
 
 	const Keys = OrderProps.name;
 	const Values = OrderProps.value;
-
+	const testHTML = `<div>
+	<ul>
+			<li><strong> ${Keys[0]} </strong> ${Values[0]} </li>
+			<li><strong> ${Keys[1]} </strong> ${Values[1]} </li>
+			<li><strong> ${Keys[2]} </strong> ${Values[2]} </li>
+			<li><strong> ${Keys[3]} </strong> ${Values[3]} </li>
+			<li><strong> ${Keys[4]} </strong> ${Values[4]} </li>
+			<li><strong> ${Keys[5]} </strong> ${Values[5]} </li>
+			<li><strong> ${Keys[6]} </strong> ${Values[6]} </li>
+			<li><strong> ${Keys[7]} </strong> ${Values[7]} </li>
+			<li><strong> ${Keys[8]} </strong> ${Values[8]} </li>
+			<li><strong> ${Keys[9]} </strong> ${Values[9]} </li>
+			<li><strong> ${Keys[10]} </strong> ${Values[10]} </li>
+			<li><strong> ${Keys[11]} </strong> ${Values[11]} </li>
+	</ul
+	</div>`;
 	const sgMail = require('@sendgrid/mail');
 	sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -241,6 +256,8 @@ function sendEmail(
 	};
 	console.log(`send email to ${toEmail}`);
 	console.log("Order information sent successfully - You've got mail!");
+	console.log(testHTML);
+	console.log(testEmail);
 	sgMail.send(msg);
 }
 
