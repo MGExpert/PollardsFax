@@ -199,18 +199,18 @@ function sendEmail(
 	const Values = OrderProps.value;
 	const testHTML = `<div>
 	<ul>
-			<li><strong> ${Keys[0]} </strong> ${Values[0]} </li>
-			<li><strong> ${Keys[1]} </strong> ${Values[1]} </li>
-			<li><strong> ${Keys[2]} </strong> ${Values[2]} </li>
-			<li><strong> ${Keys[3]} </strong> ${Values[3]} </li>
-			<li><strong> ${Keys[4]} </strong> ${Values[4]} </li>
-			<li><strong> ${Keys[5]} </strong> ${Values[5]} </li>
-			<li><strong> ${Keys[6]} </strong> ${Values[6]} </li>
-			<li><strong> ${Keys[7]} </strong> ${Values[7]} </li>
-			<li><strong> ${Keys[8]} </strong> ${Values[8]} </li>
-			<li><strong> ${Keys[9]} </strong> ${Values[9]} </li>
-			<li><strong> ${Keys[10]} </strong> ${Values[10]} </li>
-			<li><strong> ${Keys[11]} </strong> ${Values[11]} </li>
+			<li><strong> ${OrderProps.name[0]} </strong> ${OrderProps.value[0]} </li>
+			<li><strong> ${OrderProps.name[1]} </strong> ${OrderProps.value[1]} </li>
+			<li><strong> ${OrderProps.name[2]} </strong> ${OrderProps.value[2]} </li>
+			<li><strong> ${OrderProps.name[3]} </strong> ${OrderProps.value[3]} </li>
+			<li><strong> ${OrderProps.name[4]} </strong> ${OrderProps.value[4]} </li>
+			<li><strong> ${OrderProps.name[5]} </strong> ${OrderProps.value[5]} </li>
+			<li><strong> ${OrderProps.name[6]} </strong> ${OrderProps.value[6]} </li>
+			<li><strong> ${OrderProps.name[7]} </strong> ${OrderProps.value[7]} </li>
+			<li><strong> ${OrderProps.name[8]} </strong> ${OrderProps.value[8]} </li>
+			<li><strong> ${OrderProps.name[9]} </strong> ${OrderProps.value[9]} </li>
+			<li><strong> ${OrderProps.name[10]} </strong> ${OrderProps.value[10]} </li>
+			<li><strong> ${OrderProps.name[11]} </strong> ${OrderProps.value[11]} </li>
 	</ul
 	</div>`;
 	const sgMail = require('@sendgrid/mail');
@@ -225,19 +225,19 @@ function sendEmail(
   <div>
     <h2>Store Information Notes</h2>
   <ul>
-  	  <li><strong> ${Keys[0]} </strong> ${Values[0]} </li>
-			<li><strong> ${Keys[1]} </strong> ${Values[1]} </li>
-			<li><strong> ${Keys[2]} </strong> ${Values[2]} </li>
-			<li><strong> ${Keys[3]} </strong> ${Values[3]} </li>
-			<li><strong> ${Keys[4]} </strong> ${Values[4]} </li>
-			<li><strong> ${Keys[5]} </strong> ${Values[5]} </li>
-			<li><strong> ${Keys[6]} </strong> ${Values[6]} </li>
-			<li><strong> ${Keys[7]} </strong> ${Values[7]} </li>
-			<li><strong> ${Keys[8]} </strong> ${Values[8]} </li>
-			<li><strong> ${Keys[9]} </strong> ${Values[9]} </li>
-			<li><strong> ${Keys[10]} </strong> ${Values[10]} </li>
-			<li><strong> ${Keys[11]} </strong> ${Values[11]} </li>
-	</ul>
+	<li><strong> ${OrderProps.name[0]} </strong> ${OrderProps.value[0]} </li>
+	<li><strong> ${OrderProps.name[1]} </strong> ${OrderProps.value[1]} </li>
+	<li><strong> ${OrderProps.name[2]} </strong> ${OrderProps.value[2]} </li>
+	<li><strong> ${OrderProps.name[3]} </strong> ${OrderProps.value[3]} </li>
+	<li><strong> ${OrderProps.name[4]} </strong> ${OrderProps.value[4]} </li>
+	<li><strong> ${OrderProps.name[5]} </strong> ${OrderProps.value[5]} </li>
+	<li><strong> ${OrderProps.name[6]} </strong> ${OrderProps.value[6]} </li>
+	<li><strong> ${OrderProps.name[7]} </strong> ${OrderProps.value[7]} </li>
+	<li><strong> ${OrderProps.name[8]} </strong> ${OrderProps.value[8]} </li>
+	<li><strong> ${OrderProps.name[9]} </strong> ${OrderProps.value[9]} </li>
+	<li><strong> ${OrderProps.name[10]} </strong> ${OrderProps.value[10]} </li>
+	<li><strong> ${OrderProps.name[11]} </strong> ${OrderProps.value[11]} </li>
+</ul>
   	</div>
     ${OrderDetails}
 		<br />
