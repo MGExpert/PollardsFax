@@ -138,12 +138,7 @@ const prepEmail = OrderInfo => {
         `
 		);
 
-		const noteValues = Object.values(item.note_attributes);
-		const noteKeys = Object.keys(item.note_attributes);
-		console.log("checking keys and values");
-		console.log(noteValues);
-		console.log(noteKeys);
-		console.log("end of check");
+	
 
 		OrderMethod.push(`
 
