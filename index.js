@@ -209,8 +209,8 @@ function sendEmail(
   <div>
     <h2>Store Information Notes</h2>
   <ul>
+
 	
-	<li><strong> ${OrderProps.name[11]} </strong> ${OrderProps.value[11]} </li>
 </ul>
   	</div>
     ${OrderDetails}
