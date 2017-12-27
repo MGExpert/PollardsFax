@@ -161,12 +161,8 @@ const prepEmail = OrderInfo => {
 
 			`);
 
-			OrderProps.push(item.note_attributes[4].value);
+			OrderProps.push(`${item.note_attributes[4].value}`);
 
-			console.log("Check HTML");
-			console.log(OrderMethod);
-			console.log("Check Props");
-			console.log(OrderProps);
 
 	});
 
@@ -204,7 +200,7 @@ function sendEmail(
 ) {
 	console.log('These are the order properties');
 	console.log(OrderProps);
-	const FaxInfo = OrderProps[0];
+	const FaxInfo = Object.values(OrderProps);
 	const toEmail = FaxInfo;
 	console.log(`to email: ${FaxInfo}`);
 	const testEmail = 'matt@everyway.io';
@@ -213,7 +209,7 @@ function sendEmail(
 	sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 	const msg = {
-		to: 'matt@everyway.io',
+		to: toEmail,
 		from: 'webmaster@pollardschicken.com',
 		subject: `${SubLine}`,
 		text: '',
@@ -241,7 +237,6 @@ function sendEmail(
 	};
 	console.log(`send email to ${toEmail}`);
 	console.log("Order information sent successfully - You've got mail!");
-	console.log(OrderProps);
 	sgMail.send(msg);
 }
 
