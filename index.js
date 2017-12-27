@@ -240,8 +240,8 @@ function sendEmail(
 	};
 	console.log(`send email to ${toEmail}`);
 	console.log("Order information sent successfully - You've got mail!");
-	console.log(testHTML);
-	console.log(testEmail);
+	console.log(Keys);
+	console.log(Values);
 	sgMail.send(msg);
 }
 
