@@ -194,11 +194,15 @@ function sendEmail(
 	const toEmail = FaxInfo.value;
 	const testEmail = 'matt@everyway.io';
 	console.log('Preparing Email!');
+
+	const Keys = OrderProps.name;
+	const Values = OrderProps.value;
+
 	const sgMail = require('@sendgrid/mail');
 	sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 	const msg = {
-		to: 'hi@danielsnell.ninja',
+		to: testEmail,
 		from: 'webmaster@pollardschicken.com',
 		subject: `${SubLine}`,
 		text: '',
@@ -206,23 +210,33 @@ function sendEmail(
   <div>
     <h2>Store Information Notes</h2>
   <ul>
-  	${OrderMethod}
-  </ul>
+  	  <li><strong> ${Keys[0]} </strong> ${Values[0]} </li>
+			<li><strong> ${Keys[1]} </strong> ${Values[1]} </li>
+			<li><strong> ${Keys[2]} </strong> ${Values[2]} </li>
+			<li><strong> ${Keys[3]} </strong> ${Values[3]} </li>
+			<li><strong> ${Keys[4]} </strong> ${Values[4]} </li>
+			<li><strong> ${Keys[5]} </strong> ${Values[5]} </li>
+			<li><strong> ${Keys[6]} </strong> ${Values[6]} </li>
+			<li><strong> ${Keys[7]} </strong> ${Values[7]} </li>
+			<li><strong> ${Keys[8]} </strong> ${Values[8]} </li>
+			<li><strong> ${Keys[9]} </strong> ${Values[9]} </li>
+			<li><strong> ${Keys[10]} </strong> ${Values[10]} </li>
+			<li><strong> ${Keys[11]} </strong> ${Values[11]} </li>
+	</ul>
   	</div>
-		----------------
     ${OrderDetails}
-		-----------------
-  ${CustomerAddress}
-	------------------
+		<br />
+  	${CustomerAddress}
+	<br />
   <div>
     <h2>Product's Ordered</h2>
     <ul>
     ${lineItems}
     </ul>
     </div>
-		---------------------
+		<br />
     ${ShippingAddress}
-		---------------------
+
     `
 	};
 	console.log(`send email to ${toEmail}`);
