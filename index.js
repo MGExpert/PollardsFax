@@ -165,15 +165,6 @@ const prepEmail = OrderInfo => {
 	);
 };
 
-// For testing purposes only
-/*const getOrder = Shopify.get('/admin/orders/' + '248838324254' + '.json', function(err, data, headers) {
-  console.log("Order Details Obtained!")
-
-  const Order = data;
-
-    prepEmail(Order);
-  }); */
-
 // For Production
 function getDataFromShopify(id) {
 	console.log('getting data...');
@@ -207,33 +198,31 @@ function sendEmail(
 	sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 	const msg = {
-		to: toEmail,
+		to: 'hi@danielsnell.ninja',
 		from: 'webmaster@pollardschicken.com',
 		subject: `${SubLine}`,
-		text: 'Order Information:',
+		text: '',
 		html: `
-    <img src="https://cdn.shopify.com/s/files/1/2473/6554/files/pollardswhite_226x_03b498b0-d568-45a8-a48b-3d5b6f0e6812.png?10989182883601734372">
-    <h1> New Order Summary </h1>
-    <br />
   <div>
     <h2>Store Information Notes</h2>
-    <ul>
-  ${OrderMethod}
+  <ul>
+  	${OrderMethod}
   </ul>
-  </div>
-    <br />
+  	</div>
+		----------------
     ${OrderDetails}
-    <br />
+		-----------------
   ${CustomerAddress}
-  <br />
+	------------------
   <div>
     <h2>Product's Ordered</h2>
     <ul>
     ${lineItems}
     </ul>
     </div>
-    <br />
+		---------------------
     ${ShippingAddress}
+		---------------------
     `
 	};
 	console.log(`send email to ${toEmail}`);
