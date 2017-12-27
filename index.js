@@ -149,20 +149,6 @@ const prepEmail = OrderInfo => {
 
         `
 			);
-
-			OrderProps.push(`
-				<li><strong> ${item.name[0]} </strong> ${item.value[0]} </li>
-				<li><strong> ${item.name[1]} </strong> ${item.value[1]} </li>
-				<li><strong> ${item.name[2]} </strong> ${item.value[2]} </li>
-				<li><strong> ${item.name[3]} </strong> ${item.value[3]} </li>
-				<li><strong> ${item.name[4]} </strong> ${item.value[4]} </li>
-				<li><strong> ${item.name[5]} </strong> ${item.value[5]} </li>
-				<li><strong> ${item.name[6]} </strong> ${item.value[6]} </li>
-				<li><strong> ${item.name[7]} </strong> ${item.value[7]} </li>
-				<li><strong> ${item.name[8]} </strong> ${item.value[8]} </li>
-				<li><strong> ${item.name[9]} </strong> ${item.value[9]} </li>
-				<li><strong> ${item.name[10]} </strong> ${item.value[10]} </li>
-			`);
 		});
 	});
 
@@ -218,7 +204,7 @@ function sendEmail(
   <div>
     <h2>Store Information Notes</h2>
   <ul>
-		${OrderProps}
+		${OrderMethod}
 	</ul>
   	</div>
     ${OrderDetails}
