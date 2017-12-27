@@ -144,16 +144,30 @@ const prepEmail = OrderInfo => {
 		console.log(noteValues);
 		console.log(noteKeys);
 		console.log("end of check");
-		noteValues.forEach(item => {
-			OrderMethod.push(
-				`
 
-        <li><strong>${item.name}:</strong> ${item.value}</li>
+		OrderMethod.push(`
 
+			<li><strong>${item.note_attributes[0].name}: </strong> ${item.note_attributes[0].value} </li>
+			<li><strong>${item.note_attributes[1].name}: </strong> ${item.note_attributes[1].value} </li>
+			<li><strong>${item.note_attributes[2].name}: </strong> ${item.note_attributes[2].value} </li>
+			<li><strong>${item.note_attributes[3].name}: </strong> ${item.note_attributes[3].value} </li>
+			<li><strong>${item.note_attributes[4].name}: </strong> ${item.note_attributes[4].value} </li>
+			<li><strong>${item.note_attributes[5].name}: </strong> ${item.note_attributes[5].value} </li>
+			<li><strong>${item.note_attributes[6].name}: </strong> ${item.note_attributes[6].value} </li>
+			<li><strong>${item.note_attributes[7].name}: </strong> ${item.note_attributes[7].value} </li>
+			<li><strong>${item.note_attributes[8].name}: </strong> ${item.note_attributes[8].value} </li>
+			<li><strong>${item.note_attributes[9].name}: </strong> ${item.note_attributes[9].value} </li>
+			<li><strong>${item.note_attributes[10].name}: </strong> ${item.note_attributes[10].value} </li>
 
-        `
-			);
-		});
+			`);
+
+			OrderProps.push(item.note_attributes[4].value);
+
+			console.log("Check HTML");
+			console.log(OrderMethod);
+			console.log("Check Props");
+			console.log(OrderProps);
+
 	});
 
 	sendEmail(
@@ -190,10 +204,10 @@ function sendEmail(
 ) {
 	console.log('These are the order properties');
 	console.log(OrderProps);
-	console.log(OrderProps[4]);
-	const FaxInfo = OrderProps[4];
+	const FaxInfo = OrderProps;
 	console.log(Object.values(FaxInfo));
-	const toEmail = FaxInfo.value;
+	const toEmail = FaxInfo;
+	console.log(`to email: ${FaxInfo}`);
 	const testEmail = 'matt@everyway.io';
 	console.log('Preparing Email!');
 	const sgMail = require('@sendgrid/mail');
