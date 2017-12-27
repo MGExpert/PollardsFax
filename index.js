@@ -195,24 +195,8 @@ function sendEmail(
 	const testEmail = 'matt@everyway.io';
 	console.log('Preparing Email!');
 
-	const Keys = OrderProps.name;
-	const Values = OrderProps.value;
-	const testHTML = `<div>
-	<ul>
-			<li><strong> ${OrderProps.name[0]} </strong> ${OrderProps.value[0]} </li>
-			<li><strong> ${OrderProps.name[1]} </strong> ${OrderProps.value[1]} </li>
-			<li><strong> ${OrderProps.name[2]} </strong> ${OrderProps.value[2]} </li>
-			<li><strong> ${OrderProps.name[3]} </strong> ${OrderProps.value[3]} </li>
-			<li><strong> ${OrderProps.name[4]} </strong> ${OrderProps.value[4]} </li>
-			<li><strong> ${OrderProps.name[5]} </strong> ${OrderProps.value[5]} </li>
-			<li><strong> ${OrderProps.name[6]} </strong> ${OrderProps.value[6]} </li>
-			<li><strong> ${OrderProps.name[7]} </strong> ${OrderProps.value[7]} </li>
-			<li><strong> ${OrderProps.name[8]} </strong> ${OrderProps.value[8]} </li>
-			<li><strong> ${OrderProps.name[9]} </strong> ${OrderProps.value[9]} </li>
-			<li><strong> ${OrderProps.name[10]} </strong> ${OrderProps.value[10]} </li>
-			<li><strong> ${OrderProps.name[11]} </strong> ${OrderProps.value[11]} </li>
-	</ul
-	</div>`;
+	const Keys = Object.keys(OrderProps);
+	const Values = Object.values(OrderProps);
 	const sgMail = require('@sendgrid/mail');
 	sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
