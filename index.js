@@ -37,6 +37,8 @@ const prepEmail = OrderInfo => {
 
 	const SubLine = [];
 
+	const TimePlaced = Moment().format('lll');
+
 	Values.forEach(item => {
 		SubLine.push(`
       Pollard's has a new order from ${item.customer.default_address.name}
@@ -154,6 +156,7 @@ const prepEmail = OrderInfo => {
 		OrderMethod,
 		CustomerAddress,
 		ShippingAddress
+		TimePlaced
 	);
 };
 
@@ -195,29 +198,27 @@ function sendEmail(
 		subject: `${SubLine}`,
 		text: 'Order Information:',
 		html: `
-    <h1> New Order Summary </h1>
-    <br />
   <div>
-    <h2>Store Information Notes</h2>
+		<p>${SubLine}</p>
+		<h4> Order Details: </h4>
+		<ul>
+    ${lineItems}
+    </ul>
+		<br />
+	  <h4>Order Notes</h4>
     <ul>
   ${OrderMethod}
   </ul>
-  </div>
     <br />
     ${OrderDetails}
     <br />
   ${CustomerAddress}
   <br />
-  <div>
-    <h2>Product's Ordered</h2>
-    <ul>
-    ${lineItems}
-    </ul>
-    </div>
-    <br />
     ${ShippingAddress}
-    `
+		</div>
+		`
 	};
+	console.log(TimePlaced);
 	console.log(`send email to ${toEmail}`);
 	console.log("Order information sent successfully - You've got mail!");
 	sgMail.send(msg);
