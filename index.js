@@ -199,6 +199,7 @@ function sendEmail(
 		text: 'Order Information:',
 		html: `
   <div>
+		<p>Date: ${TimePlaced}</p>
 		<p>${SubLine}</p>
 		<h4> Order Details: </h4>
 		<ul>
