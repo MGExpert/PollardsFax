@@ -138,10 +138,11 @@ const prepEmail = OrderInfo => {
 		const noteValues = Object.values(item.note_attributes);
 
 		noteValues.forEach(item => {
+			console.log(Object.keys(item));
 			OrderMethod.push(
-				<li>
+				`<li>
 					<strong>${item.name}:</strong> ${item.value}
-				</li>
+				</li>`
 			);
 
 			OrderProps.push(item);
