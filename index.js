@@ -137,8 +137,10 @@ const prepEmail = OrderInfo => {
 
 		const noteValues = Object.values(item.note_attributes);
 
+		console.log(Object.keys(noteValues));
+
 		noteValues.forEach(item => {
-			console.log(Object.keys(item));
+
 			OrderMethod.push(
 				`<li>
 					<strong>${item.name}:</strong> ${item.value}
@@ -200,7 +202,6 @@ function sendEmail(
 		text: 'Order Information:',
 		html: `
   <div>
-		<p>Date: ${TimePlaced}</p>
 		<p>${SubLine}</p>
 		<h4> Order Details: </h4>
 		<ul>
@@ -220,7 +221,6 @@ function sendEmail(
 		</div>
 		`
 	};
-	console.log(TimePlaced);
 	console.log(`send email to ${toEmail}`);
 	console.log("Order information sent successfully - You've got mail!");
 	sgMail.send(msg);
