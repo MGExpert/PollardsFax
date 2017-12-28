@@ -71,7 +71,8 @@ const prepEmail = OrderInfo => {
         <li><strong>Price:</strong> ${item.price} </li>
         <li><strong>Sku:</strong> ${item.sku} </li>
         <li><strong>Vendor:</strong> ${item.vendor} </li>
-        `
+				<li><strong>Link:</strong> https://pollardschicken-com.myshopify.com/admin/orders/${item.id} </li>
+				`
 			);
 		});
 
