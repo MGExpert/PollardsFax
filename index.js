@@ -156,7 +156,7 @@ const prepEmail = OrderInfo => {
 		lineItems,
 		OrderMethod,
 		CustomerAddress,
-		ShippingAddress
+		ShippingAddress,
 		TimePlaced
 	);
 };
