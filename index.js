@@ -230,7 +230,6 @@ function sendEmail(
 }
 
 // Setting up heroku - Dynamic Binding
-const PORT = process.env.PORT || 2000;
-app.listen(PORT);
+
 const PORT = process.env.PORT || 2000;
 app.listen(PORT);
