@@ -32,7 +32,7 @@ const prepEmail = OrderInfo => {
 	const OrderMethod = [];
 	const ShippingAddress = [];
 	const lineItems = [];
-	const lineProps = [];
+
 	const OrderProps = [];
 
 	const SubLine = [];
@@ -78,17 +78,7 @@ const prepEmail = OrderInfo => {
 				} </li>
 				`
 			);
-		});
-
-		const ItemProperties = item.line_item.properties;
-
-		ItemProperties.forEach(item => {
-			lineProps.push(`
-
-					<li><strong>${item.name}</strong> ${item.value}</li>
-
-			`);
-			console.log(lineProps);
+			console.log(item);
 		});
 
 		OrderDetails.push(
@@ -150,9 +140,8 @@ const prepEmail = OrderInfo => {
 
 		const noteValues = Object.values(item.note_attributes);
 
-		console.log(Object.keys(noteValues));
-
 		noteValues.forEach(item => {
+			console.log(Object.keys(item));
 			OrderMethod.push(
 				`<li>
 					<strong>${item.name}:</strong> ${item.value}
@@ -171,8 +160,7 @@ const prepEmail = OrderInfo => {
 		OrderMethod,
 		CustomerAddress,
 		ShippingAddress,
-		TimePlaced,
-		lineProps
+		TimePlaced
 	);
 };
 
@@ -195,8 +183,7 @@ function sendEmail(
 	lineItems,
 	OrderMethod,
 	CustomerAddress,
-	ShippingAddress,
-	lineProps
+	ShippingAddress
 ) {
 	console.log('These are the order properties');
 	console.log(OrderProps);
@@ -207,17 +194,6 @@ function sendEmail(
 	const testEmail = 'matt@everyway.io';
 	console.log('Preparing Email!');
 	const sgMail = require('@sendgrid/mail');
-	const checkLineProps = lineProps => {
-		if (lineProps.length < 1) {
-			return 'No Sides Added';
-		} else {
-			return lineProps;
-		}
-	};
-
-	console.log(lineProps);
-	console.log(checkLineProps);
-
 	sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 	const msg = {
@@ -227,6 +203,7 @@ function sendEmail(
 		text: 'Order Information:',
 		html: `
   <div>
+		<p>Date: ${TimePlaced}</p>
 		<p>${SubLine}</p>
 		<h4> Order Details: </h4>
 		<ul>
@@ -246,11 +223,14 @@ function sendEmail(
 		</div>
 		`
 	};
+	console.log(TimePlaced);
 	console.log(`send email to ${toEmail}`);
 	console.log("Order information sent successfully - You've got mail!");
 	sgMail.send(msg);
 }
 
 // Setting up heroku - Dynamic Binding
+const PORT = process.env.PORT || 2000;
+app.listen(PORT);
 const PORT = process.env.PORT || 2000;
 app.listen(PORT);
