@@ -78,7 +78,10 @@ const prepEmail = OrderInfo => {
 				} </li>
 				`
 			);
-			console.log(item.properties);
+			const lineProps = item.properties;
+			lineProps.forEach(item => {
+				console.log(`${item.name}: ${item.value} were added`);
+			});
 		});
 
 		OrderDetails.push(
