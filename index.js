@@ -78,7 +78,7 @@ const prepEmail = OrderInfo => {
 				} </li>
 				`
 			);
-			console.log(item);
+			console.log(item.line_items);
 		});
 
 		OrderDetails.push(
@@ -183,7 +183,7 @@ function sendEmail(
 	lineItems,
 	OrderMethod,
 	CustomerAddress,
-	ShippingAddress
+	ShippingAddress,
 	TimePlaced
 ) {
 	console.log('These are the order properties');
