@@ -64,7 +64,7 @@ const prepEmail = OrderInfo => {
 		);
 
 		const Items = item.line_items;
-
+		console.log(Object.keys(Items));
 		Items.forEach(item => {
 			lineItems.push(
 				`
