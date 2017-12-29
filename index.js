@@ -32,7 +32,7 @@ const prepEmail = OrderInfo => {
 	const OrderMethod = [];
 	const ShippingAddress = [];
 	const lineItems = [];
-
+	const lineProps = [];
 	const OrderProps = [];
 
 	const SubLine = [];
@@ -78,9 +78,13 @@ const prepEmail = OrderInfo => {
 				} </li>
 				`
 			);
-			const lineProps = item.properties;
-			lineProps.forEach(item => {
-				console.log(`${item.name}: ${item.value} were added`);
+			const linePropsCheck = item.properties;
+			linePropsCheck.forEach(item => {
+				lineProps.push(`
+					
+					<li><strong>${item.name}</strong>: ${item.value}</li>
+
+					`);
 			});
 		});
 
@@ -163,7 +167,8 @@ const prepEmail = OrderInfo => {
 		OrderMethod,
 		CustomerAddress,
 		ShippingAddress,
-		TimePlaced
+		TimePlaced,
+		lineProps
 	);
 };
 
@@ -187,9 +192,13 @@ function sendEmail(
 	OrderMethod,
 	CustomerAddress,
 	ShippingAddress,
-	TimePlaced
+	TimePlaced,
+	lineProps
 ) {
 	console.log('These are the order properties');
+
+	console.log('check props');
+	console.log(lineProps);
 	console.log(OrderProps);
 	console.log(OrderProps[4]);
 	const FaxInfo = OrderProps[4];
@@ -213,6 +222,8 @@ function sendEmail(
 		<ul>
     ${lineItems}
     </ul>
+		<p>The following sides were added</p>
+		${lineProps}
 		<br />
 	  <h4>Order Notes</h4>
     <ul>
