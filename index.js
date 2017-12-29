@@ -184,6 +184,7 @@ function sendEmail(
 	OrderMethod,
 	CustomerAddress,
 	ShippingAddress
+	TimePlaced
 ) {
 	console.log('These are the order properties');
 	console.log(OrderProps);
@@ -203,9 +204,9 @@ function sendEmail(
 		text: 'Order Information:',
 		html: `
   <div>
-		<p>Date: ${TimePlaced}</p>
+
 		<p>${SubLine}</p>
-		<h4> Order Details: </h4>
+		<h4> Order Details: ${TimePlaced} </h4>
 		<ul>
     ${lineItems}
     </ul>
