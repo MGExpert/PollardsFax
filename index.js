@@ -64,7 +64,7 @@ const prepEmail = OrderInfo => {
 		);
 
 		const Items = item.line_items;
-		console.log(Object.keys(Items));
+
 		Items.forEach(item => {
 			lineItems.push(
 				`
@@ -198,8 +198,6 @@ function sendEmail(
 	console.log('These are the order properties');
 
 	console.log('check props');
-	console.log(lineProps);
-	console.log(OrderProps);
 	console.log(OrderProps[4]);
 	const FaxInfo = OrderProps[4];
 	console.log(Object.values(FaxInfo));
@@ -238,7 +236,6 @@ function sendEmail(
 		</div>
 		`
 	};
-	console.log(TimePlaced);
 	console.log(`send email to ${toEmail}`);
 	console.log("Order information sent successfully - You've got mail!");
 	sgMail.send(msg);
