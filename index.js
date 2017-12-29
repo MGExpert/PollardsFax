@@ -32,7 +32,7 @@ const prepEmail = OrderInfo => {
 	const OrderMethod = [];
 	const ShippingAddress = [];
 	const lineItems = [];
-
+	const lineProps = [];
 	const OrderProps = [];
 
 	const SubLine = [];
@@ -73,9 +73,22 @@ const prepEmail = OrderInfo => {
         <li><strong>Price:</strong> ${item.price} </li>
         <li><strong>Sku:</strong> ${item.sku} </li>
         <li><strong>Vendor:</strong> ${item.vendor} </li>
-				<li><strong>Link:</strong> https://pollardschicken-com.myshopify.com/admin/orders/${item.id} </li>
+				<li><strong>Link:</strong> https://pollardschicken-com.myshopify.com/admin/orders/${
+					item.id
+				} </li>
 				`
 			);
+		});
+
+		const ItemProperties = item.line_item.properties;
+
+		ItemProperties.forEach(item => {
+			lineProps.push(`
+
+					<li><strong>${item.name}</strong> ${item.value}</li>
+
+			`);
+			console.log(lineProps);
 		});
 
 		OrderDetails.push(
@@ -140,7 +153,6 @@ const prepEmail = OrderInfo => {
 		console.log(Object.keys(noteValues));
 
 		noteValues.forEach(item => {
-
 			OrderMethod.push(
 				`<li>
 					<strong>${item.name}:</strong> ${item.value}
@@ -159,7 +171,8 @@ const prepEmail = OrderInfo => {
 		OrderMethod,
 		CustomerAddress,
 		ShippingAddress,
-		TimePlaced
+		TimePlaced,
+		lineProps
 	);
 };
 
@@ -182,7 +195,8 @@ function sendEmail(
 	lineItems,
 	OrderMethod,
 	CustomerAddress,
-	ShippingAddress
+	ShippingAddress,
+	lineProps
 ) {
 	console.log('These are the order properties');
 	console.log(OrderProps);
@@ -193,6 +207,17 @@ function sendEmail(
 	const testEmail = 'matt@everyway.io';
 	console.log('Preparing Email!');
 	const sgMail = require('@sendgrid/mail');
+	const checkLineProps = lineProps => {
+		if (lineProps.length < 1) {
+			return 'No Sides Added';
+		} else {
+			return lineProps;
+		}
+	};
+
+	console.log(lineProps);
+	console.log(checkLineProps);
+
 	sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 	const msg = {
