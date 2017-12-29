@@ -78,7 +78,7 @@ const prepEmail = OrderInfo => {
 				} </li>
 				`
 			);
-			console.log(item.line_items);
+			console.log(item.properties);
 		});
 
 		OrderDetails.push(
