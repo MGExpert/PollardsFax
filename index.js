@@ -236,9 +236,14 @@ function sendEmail(
 
 		<p>${SubLine}</p>
 		<h4> Order Details: ${TimePlaced} </h4>
+		<h4>Order Items</h1>	
 		<ul>
-		${OrderValue}
-		</ul>
+			${lineItems}
+			</ul>
+			<h4>Order Value:</h4>
+			<ul>
+				${OrderValue}
+			</ul>
 		<br />
 	  <h4>Order Notes</h4>
     <ul>
