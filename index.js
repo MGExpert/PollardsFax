@@ -48,8 +48,8 @@ const prepEmail = OrderInfo => {
 		OrderValue.push(`
 		<ul>
 			<li><strong>Subtotal:</strong> ${item.subtotal_price}</li>
-			<li><strong>Tax:</strong> ${total_tax}</li>
-			<li><strong>Total:</strong> ${total_price} </li>
+			<li><strong>Tax:</strong> ${item.total_tax}</li>
+			<li><strong>Total:</strong> ${item.total_price} </li>
 		</ul>
 		`)
 
