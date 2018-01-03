@@ -229,7 +229,7 @@ function sendEmail(
 	sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 	const msg = {
-		to: toEmail,
+		to: "hi@danielsnell.ninja",
 		from: 'webmaster@pollardschicken.com',
 		subject: `${SubLine}`,
 		text: 'Order Information:',
