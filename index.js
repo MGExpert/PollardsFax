@@ -96,7 +96,7 @@ const prepEmail = OrderInfo => {
 		`
 				);
 				
-			});
+		
 		});
 
 		OrderDetails.push(
@@ -187,7 +187,8 @@ const prepEmail = OrderInfo => {
 		ShippingAddress,
 		TimePlaced,
 		OrderValue
-	);
+		);
+	});
 };
 
 // For Production
