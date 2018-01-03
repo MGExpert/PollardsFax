@@ -32,8 +32,9 @@ const prepEmail = OrderInfo => {
 	const OrderMethod = [];
 	const ShippingAddress = [];
 	const lineItems = [];
-	const lineProps = [];
+	const OrderValue = [];
 	const OrderProps = [];
+	const OrderPrice = [];
 
 	const SubLine = [];
 
@@ -43,6 +44,17 @@ const prepEmail = OrderInfo => {
 		SubLine.push(`
       Pollard's has a new order from ${item.customer.default_address.name}
       `);
+
+	  const newTime = m().format(lll);
+
+		OrderValue.push(`
+		<ul>
+			<li><strong>Date:</strong> ${newTime}</li>
+			<li><strong>Subtotal:</strong> ${item.subtotal_price}</li>
+			<li><strong>Tax:</strong> ${total_tax}</li>
+			<li><strong>Total:</strong> ${total_price} </li>
+		</ul>
+		`)
 
 		ShippingAddress.push(
 			`
@@ -66,25 +78,27 @@ const prepEmail = OrderInfo => {
 		const Items = item.line_items;
 
 		Items.forEach(item => {
-			lineItems.push(
+		const Props = Object.values(item.properties);
+
+		const PropStore = [];
+
+		Props.forEach( prop => {
+
+			PropStore.push(`<li><strong>${prop.name}:</strong> ${prop.value}</li>`);
+
+			});
+			console.log(PropStore);
+		lineItems.push(
 				`
-        <li><strong>Product: </strong> ${item.title} </li>
+		<li><strong>Product: </strong> ${item.name} </li>
+		<li><strong>Type: </strong> ${item.variant} </li>
         <li><strong>Qty:</strong> ${item.quantity} </li>
         <li><strong>Price:</strong> ${item.price} </li>
-        <li><strong>Sku:</strong> ${item.sku} </li>
-        <li><strong>Vendor:</strong> ${item.vendor} </li>
-				<li><strong>Link:</strong> https://pollardschicken-com.myshopify.com/admin/orders/${
-					item.id
-				} </li>
-				`
-			);
-			const linePropsCheck = item.properties;
-			linePropsCheck.forEach(item => {
-				lineProps.push(`
-					
-					<li><strong>${item.name}</strong>: ${item.value}</li>
-
-					`);
+		<li><strong>Link:</strong><a href="https://pollardschicken-com.myshopify.com/admin/orders/${item.id}">View order ${item.id}</a></strong> </li>
+		${PropStore}	
+		`
+				);
+				
 			});
 		});
 
@@ -150,13 +164,20 @@ const prepEmail = OrderInfo => {
 		noteValues.forEach(item => {
 			console.log(Object.keys(item));
 			OrderMethod.push(
-				`<li>
+				`<p>The following sides were added</p>
+				<ul>
+				<li>
 					<strong>${item.name}:</strong> ${item.value}
-				</li>`
+				</li>
+				</ul>
+				`
+
+
 			);
 
 			OrderProps.push(item);
-		});
+
+			
 	});
 
 	sendEmail(
@@ -168,7 +189,7 @@ const prepEmail = OrderInfo => {
 		CustomerAddress,
 		ShippingAddress,
 		TimePlaced,
-		lineProps
+		OrderValue
 	);
 };
 
@@ -193,7 +214,7 @@ function sendEmail(
 	CustomerAddress,
 	ShippingAddress,
 	TimePlaced,
-	lineProps
+	OrderValue
 ) {
 	console.log('These are the order properties');
 
@@ -213,15 +234,13 @@ function sendEmail(
 		subject: `${SubLine}`,
 		text: 'Order Information:',
 		html: `
-  <div>
+  	<div>
 
 		<p>${SubLine}</p>
 		<h4> Order Details: ${TimePlaced} </h4>
 		<ul>
-    ${lineItems}
-    </ul>
-		<p>The following sides were added</p>
-		${lineProps}
+		${OrderValue}
+		</ul>
 		<br />
 	  <h4>Order Notes</h4>
     <ul>
