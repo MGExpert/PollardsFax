@@ -240,6 +240,7 @@ function sendEmail(
 		<ul>
 			${lineItems}
 			</ul>
+			<br />
 			<h4>Order Value:</h4>
 			<ul>
 				${OrderValue}
