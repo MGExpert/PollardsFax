@@ -45,7 +45,7 @@ const prepEmail = OrderInfo => {
       Pollard's has a new order from ${item.customer.default_address.name}
       `);
 
-	  const newTime = m().format(lll);
+	  const newTime = Moment().format(lll);
 
 		OrderValue.push(`
 		<ul>
