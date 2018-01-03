@@ -227,7 +227,7 @@ function sendEmail(
 	sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 	const msg = {
-		to: "matt@everyway.io",
+		to: toEmail,
 		from: 'webmaster@pollardschicken.com',
 		subject: `${SubLine}`,
 		text: 'Order Information:',
