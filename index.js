@@ -91,7 +91,7 @@ const prepEmail = OrderInfo => {
 		<li><strong>Type: </strong> ${item.variant} </li>
         <li><strong>Qty:</strong> ${item.quantity} </li>
         <li><strong>Price:</strong> ${item.price} </li>
-		<li><strong>Link:</strong><a href="https://pollardschicken-com.myshopify.com/admin/orders/${item.id}">View order ${item.id}</a></strong> </li>
+		<li><strong>Link:</strong><a href="https://pollardschicken-com.myshopify.com/admin/orders/${item.id}">View order ${item.id}</a></li>
 		${PropStore}	
 		`
 				);
