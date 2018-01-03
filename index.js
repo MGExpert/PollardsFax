@@ -161,7 +161,7 @@ const prepEmail = OrderInfo => {
 		noteValues.forEach(item => {
 			console.log(Object.keys(item));
 			OrderMethod.push(
-				`<p>The following sides were added</p>
+				`
 				<ul>
 				<li>
 					<strong>${item.name}:</strong> ${item.value}
