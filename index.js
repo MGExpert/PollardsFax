@@ -92,11 +92,11 @@ const prepEmail = OrderInfo => {
         <li><strong>Qty:</strong> ${item.quantity} </li>
         <li><strong>Price:</strong> ${item.price} </li>
 		<li><strong>Link:</strong><a href="https://pollardschicken-com.myshopify.com/admin/orders/${item.id}">View order ${item.id}</a></li>
-		${PropStore}	
+		${PropStore}
 		`
 				);
-				
-		
+
+
 		});
 
 		OrderDetails.push(
@@ -174,17 +174,14 @@ const prepEmail = OrderInfo => {
 
 			OrderProps.push(item);
 
-			
+
 	});
 
 	sendEmail(
 		OrderProps,
 		SubLine,
-		OrderDetails,
 		lineItems,
 		OrderMethod,
-		CustomerAddress,
-		ShippingAddress,
 		TimePlaced,
 		OrderValue
 		);
@@ -206,11 +203,8 @@ function getDataFromShopify(id) {
 function sendEmail(
 	OrderProps,
 	SubLine,
-	OrderDetails,
 	lineItems,
 	OrderMethod,
-	CustomerAddress,
-	ShippingAddress,
 	TimePlaced,
 	OrderValue
 ) {
@@ -236,7 +230,7 @@ function sendEmail(
 
 		<p>${SubLine}</p>
 		<h4> Order Details: ${TimePlaced} </h4>
-		<h4>Order Items</h1>	
+		<h4>Order Items</h1>
 		<ul>
 			${lineItems}
 			</ul>
