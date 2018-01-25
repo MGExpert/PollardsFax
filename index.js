@@ -244,13 +244,7 @@ function sendEmail(
     <ul>
   ${OrderMethod}
   </ul>
-    <br />
-    ${OrderDetails}
-    <br />
-  ${CustomerAddress}
-  <br />
-    ${ShippingAddress}
-		</div>
+
 		`
 	};
 	console.log(`send email to ${toEmail}`);
