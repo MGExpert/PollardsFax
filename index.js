@@ -244,7 +244,7 @@ function sendEmail(
     <ul>
   ${OrderMethod}
   </ul>
-
+</div>
 		`
 	};
 	console.log(`send email to ${toEmail}`);
