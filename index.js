@@ -158,13 +158,11 @@ const prepEmail = (OrderInfo) => {
 		noteValues.forEach(item => {
 			console.log(Object.keys(item));
 			OrderMethod.push(
-				`
-				<ul>
+
 				<li>
 					<strong>${item.name}:</strong> ${item.value}
 				</li>
-				</ul>
-				`
+								
 
 
 			);
@@ -187,7 +185,7 @@ const prepEmail = (OrderInfo) => {
 var CheckPrevious;
 // For Production
 const getDataFromShopify = (id) => {
-	if ( CheckPrevious !== id ) { 
+	if ( CheckPrevious !== id ) {
 	console.log('getting data...');
 	console.log(`This is the id: ${id}`);
 	// make the api call to get the data
