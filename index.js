@@ -13,18 +13,15 @@ var Shopify = new shopifyAPI({
 	access_token: process.env.SHOPIFY_API_PASSWORD // Your API password
 });
 
-const idStore = [];
-
 app.post('/order-recieved', function(req, res) {
 	const faxOrders = [];
 	const id = req.get('x-shopify-order-id');
 	faxOrders.push(id);
-	idStore.push(id);
 	getDataFromShopify(id);
 	res.send('success');
 });
 
-const prepEmail = OrderInfo => {
+const prepEmail = (OrderInfo) => {
 	const Values = Object.values(OrderInfo);
 
 	const OrderDetails = [];
@@ -187,9 +184,10 @@ const prepEmail = OrderInfo => {
 		);
 	});
 };
-
+var CheckPrevious;
 // For Production
-function getDataFromShopify(id) {
+const getDataFromShopify = (id) => {
+	if ( CheckPrevious !== id ) { 
 	console.log('getting data...');
 	console.log(`This is the id: ${id}`);
 	// make the api call to get the data
@@ -197,7 +195,10 @@ function getDataFromShopify(id) {
 		console.log('Order Details Obtained!');
 		const Order = data;
 		prepEmail(Order);
-	});
+		console.log(`Updating Order Flag`);
+		CheckPrevious = id;
+		});
+	}
 }
 
 function sendEmail(
